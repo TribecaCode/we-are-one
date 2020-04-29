@@ -1,0 +1,30 @@
+.container-fluid {
+  position: relative; // makes background with QuadVertexColors to not affect its background
+  max-width: 1280px;
+}
+
+.container--content {
+  padding-top: 20px;
+
+  @media (min-width: 1200px) {
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+}
+
+.padded-sides-10 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.modal-content {
+  border-radius: 0;
+}
+
+.news-border-top {
+  border-top: 6px solid #454646;
+}
+
+iframe {
+  max-width: 100%;
+}

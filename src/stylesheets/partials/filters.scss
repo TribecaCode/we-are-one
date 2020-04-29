@@ -1,0 +1,277 @@
+.Filters {
+  color: $black;
+  background: $white;
+
+  .FiltersNav {
+    display: flex;
+    flex-direction: column-reverse;
+
+    @media (min-width: 600px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 600px) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .spacer {
+    flex-grow: 1;
+  }
+
+  .FiltersNavLeft {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .fa-chevron-down,
+    .fa-chevron-up {
+      opacity: 0.58;
+      margin-right: 8px;
+    }
+
+    @media (max-width: 600px) {
+      justify-content: center;
+      background: $pale-grey;
+    }
+  }
+
+  .FiltersNavRight {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 600px) {
+      justify-content: space-between;
+    }
+  }
+
+  .FiltersNavLink {
+    color: $black;
+    text-decoration: none;
+    font: 16px/30px $montserrat-semibold;
+    padding: 12px 16px;
+  }
+  .FiltersNavLink.active {
+    opacity: 0.58;
+  }
+
+  .FiltersNavSearch {
+    display: none;
+    @media (min-width: $bootstrap-lg) {
+      display: block;
+      min-width: 275px;
+    }
+  }
+
+  .FiltersNavSearchXS {
+    max-width: 400px;
+    margin: 20px auto;
+    display: block;
+
+    @media (min-width: $bootstrap-lg) {
+      display: none;
+    }
+  }
+
+  .FiltersNavSearchInputContainer {
+    position: relative;
+  }
+
+  .FiltersNavSearchSubmit {
+    position: absolute;
+    right: 0;
+    top: 4px;
+    border: none;
+    background: transparent;
+    opacity: 0.58;
+  }
+
+  .FiltersNavSearchInput {
+    width: 100%;
+    height: 28px;
+    border-radius: 2px;
+    background: #d8d8d8;
+    border: none;
+    padding: 10px;
+  }
+
+  .FiltersContent {
+    display: none;
+
+    .FilterContentSection {
+      .FilterContentSectionTitle {
+        font: 16px/20px $montserrat-semibold;
+        color: $dark-grey;
+        text-transform: uppercase;
+      }
+      // flex: 1 1 auto;
+    }
+
+    .FilterContentList {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+
+    .FilterContentList--selected_categories {
+      max-height: 115px;
+
+      @media (min-width: $bootstrap-sm) {
+        max-height: 85px;
+
+        .FilterContentListItem {
+          width: 33%;
+        }
+      }
+      // @media (min-width: $bootstrap-md) {
+      //   max-height: 75px;
+      // }
+      @media (min-width: $bootstrap-xl) {
+        max-height: 100%;
+        .FilterContentListItem {
+          width: 100%;
+        }
+      }
+    }
+
+    .FilterContentList--selected_kinds {
+      max-height: 25px;
+
+      @media (min-width: $bootstrap-xl) {
+        max-height: 100%;
+      }
+    }
+
+    .FilterContentList--selected_genres {
+      max-height: 340px;
+
+      @media (min-width: $bootstrap-sm) {
+        max-height: 230px;
+
+        .FilterContentListItem {
+          width: 33%;
+        }
+      }
+
+      @media (min-width: $bootstrap-xl) {
+        max-height: 340px;
+      }
+    }
+
+    .FilterContentList--selected_sections {
+      @media (min-width: $bootstrap-md) {
+        max-height: 190px;
+      }
+      @media (min-width: $bootstrap-lg) {
+        // max-height: 120px;
+
+        .FilterContentListItem {
+          width: 33%;
+        }
+      }
+      @media (min-width: $bootstrap-xl) {
+        // max-height: 100%;
+        max-height: 250px;
+
+        .FilterContentListItem {
+          width: 100%;
+        }
+      }
+    }
+
+    .FilterContentList--selected_theaters {
+      @media (min-width: $bootstrap-md) {
+        max-height: 100px;
+      }
+      @media (min-width: $bootstrap-xl) {
+        max-height: 100%;
+      }
+    }
+
+    .FilterContentListItem {
+      font: 16px/18px $hind-medium;
+      color: $black;
+
+      .FilterCount {
+        color: #7e7f7f;
+        margin-left: 5px;
+        font-size: 14px;
+      }
+    }
+
+    .FilterContentListItem--disabled {
+      color: $grey;
+    }
+
+    .FilterContentInner {
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .FiltersContentActions {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+    }
+
+    .FiltersContentActionsCount {
+      padding: 20px;
+    }
+  }
+}
+
+// CUSTOM CHECKBOX
+.FestivalCheckbox input[type="checkbox"] {
+  display: none;
+}
+
+.FestivalCheckbox label {
+  font: 16px/18px $hind-medium;
+  position: relative;
+  display: inline-block;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+.FestivalCheckbox label::before,
+.FestivalCheckbox label::after {
+  position: absolute;
+  content: "";
+  display: inline-block; /*Needed for the line-height to take effect*/
+}
+
+/*Outer box of the fake checkbox*/
+.FestivalCheckbox label::before {
+  height: 14px;
+  width: 14px;
+  border: 2px solid grey;
+  opacity: 0.58;
+  left: 0px;
+  top: 2px;
+}
+
+/*Checkmark of the fake checkbox*/
+.FestivalCheckbox label::after {
+  height: 5px;
+  width: 9px;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  transform: rotate(-45deg);
+  left: 3px;
+  top: 7px;
+}
+
+/*Hide the checkmark by default*/
+.FestivalCheckbox input[type="checkbox"] + label::after {
+  content: none;
+}
+
+/*Unhide on the checked state*/
+.FestivalCheckbox input[type="checkbox"]:checked + label::after {
+  content: "";
+}

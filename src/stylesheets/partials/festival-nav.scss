@@ -1,0 +1,204 @@
+.festival-nav {
+  font: $montserrat-regular;
+  font-size: 16px;
+  background-color: $dark-grey;
+  width: 100%;
+  z-index: 3;
+  padding: 28px 0;
+
+  .inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  img {
+    max-width: 220px;
+
+    @media (max-width: 400px) {
+      max-width: 190px;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+  }
+
+  .menu-left li {
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .item a {
+    display: block;
+    padding: 24px 25px;
+    color: $white;
+    text-decoration: none;
+    transition: color 250ms ease-out;
+    &:hover {
+      color: darken($white, 15%);
+    }
+  }
+
+  .cart-right-container {
+    display: none;
+  }
+
+  /* menu icon */
+
+  .menu-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 35px 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .menu-icon .navicon {
+    background: $white;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background 0.2s ease-out;
+    width: 28px;
+  }
+
+  .menu-icon .navicon:before,
+  .menu-icon .navicon:after {
+    background: $white;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    width: 100%;
+  }
+
+  .menu-icon .navicon:before {
+    top: 9px;
+  }
+
+  .menu-icon .navicon:after {
+    top: -9px;
+  }
+
+  /* menu btn */
+
+  .menu-btn {
+    display: none;
+  }
+
+  .menu-btn:checked ~ .menu {
+    max-height: 300px;
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+  }
+
+  .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+  .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+  }
+
+  /* menu */
+  .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+  }
+}
+
+/**************************************
+  Min screen 
+**************************************/
+@media (min-width: 840px) {
+  .festival-nav {
+    padding: 24px 0 0;
+
+    .inner {
+      text-align: center;
+    }
+
+    .menu-left {
+      display: block;
+    }
+
+    .menu-left {
+      .cart-left-container {
+        display: none;
+      }
+
+      .img-li {
+        width: 100%;
+      }
+    }
+
+    .cart-right-container {
+      display: inline-block;
+    }
+
+    li {
+      float: left;
+    }
+    .menu {
+      max-height: none;
+      display: inline-block;
+    }
+    .menu-icon {
+      display: none;
+    }
+  }
+}
+
+/**************************************
+  Large screen 
+**************************************/
+@media (min-width: 1180px) {
+  .festival-nav {
+    padding: 26px 0;
+
+    .inner {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .menu-left {
+      display: inline-block;
+    }
+
+    .menu-left {
+      .cart-left-container {
+        display: none;
+      }
+    }
+
+    .cart-right-container {
+      display: inline-block;
+    }
+
+    li {
+      float: left;
+    }
+    .menu {
+      clear: none;
+      float: right;
+      max-height: none;
+    }
+    .menu-icon {
+      display: none;
+    }
+  }
+}

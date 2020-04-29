@@ -1,0 +1,221 @@
+.films-show,
+.we_are_one-show,
+.festival-archive {
+  color: $black;
+
+  .FilmHeader {
+    background: $black;
+    position: relative;
+    color: $white;
+
+    .container {
+      @media (max-width: $bootstrap-md) {
+        width: 100%;
+      }
+    }
+
+    .FilmHeader_img-container {
+      position: relative;
+      padding: 0;
+    }
+
+    .FilmHeader__mask {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      box-shadow: inset 0 -63px 63px -10px #000;
+      @media (min-width: 600px) {
+        box-shadow: inset 0 0 63px 63px #000;
+      }
+    }
+
+    .FilmHeader__content {
+      position: absolute;
+      top: 20px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      @media (min-width: $bootstrap-lg) {
+        top: 60px;
+        bottom: 70px;
+      }
+    }
+    .heading-3 {
+      @include fluid-type(20px, 30px);
+    }
+    .heading-4 {
+      font-family: $montserrat-semibold;
+    }
+  }
+
+  .film-container {
+    @media (min-width: $bootstrap-lg) {
+      top: -50px;
+    }
+  }
+
+  @each $name, $value in $colors {
+    .film-container--#{$name} {
+      border-top: 6px solid $value;
+    }
+  }
+
+  .FilmSubtitle {
+    font: 14px/18px $montserrat-semibold;
+    text-transform: uppercase;
+    @media (max-width: $bootstrap-sm) {
+      text-align: center;
+    }
+  }
+
+  .FilmTitle {
+    margin-left: 0;
+    @media (max-width: $bootstrap-sm) {
+      text-align: center;
+    }
+  }
+
+  .FilmGenres {
+    margin-bottom: 10px;
+    @media (max-width: $bootstrap-sm) {
+      text-align: center;
+    }
+    @media (min-width: $bootstrap-lg) {
+      margin-bottom: 100px;
+    }
+
+    span {
+      color: $dark-grey;
+      font: 16px/30px $hind-medium;
+      border-top: 1px solid $dark-grey;
+    }
+  }
+
+  .FilmSynopsis {
+    margin-bottom: 20px;
+    font-family: $hind-medium;
+    @include fluid-type(16px, 21px);
+    color: #141414;
+  }
+
+  .FilmSectionTitle {
+    font: 24px/30px $montserrat-semibold;
+  }
+  .FilmSectionTitle.director {
+    font-family: $hind-medium;
+  }
+
+  .Screenings {
+    margin-bottom: 20px;
+
+    .Screening {
+      border-top: 4px solid $brownish-orange;
+      position: relative;
+      color: white;
+      margin-bottom: 20px;
+      background: $dark-grey;
+      padding: 20px;
+      align-items: center;
+
+      .ScreeningContent {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .ScreeningDate {
+        font-family: $hind-medium;
+        @include fluid-type(18px, 21px);
+      }
+      .ScreeningVenue {
+        cursor: pointer;
+        text-decoration: none;
+        color: $white;
+        font-family: $hind-regular;
+        @include fluid-type(16px, 18px);
+      }
+      .ScreeningKind {
+        font-family: $hind-regular;
+        @include fluid-type(14px, 16px);
+      }
+      .fas {
+        min-width: 25px;
+      }
+      .ScreeningBuy {
+        color: $white;
+        font: 12px/20px $hind-regular;
+
+        a {
+          color: $white;
+          text-transform: uppercase;
+        }
+      }
+
+      .ScreeningNote {
+        font-family: $hind-regular;
+        font-size: 12px;
+      }
+    }
+
+    .Screening--rush {
+      border-top: 4px solid #d8d8d8;
+      &:before {
+        content: "RUSH";
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0px 14px 4px;
+        background: #d8d8d8;
+        color: $black;
+        font: 14px/18px $montserrat-semibold;
+      }
+    }
+  }
+
+  .rush-note {
+    color: $black;
+    font: 14px/20px $hind-regular;
+  }
+
+  .FilmSectionBlocks {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .FilmSectionBlock {
+    padding: 20px;
+    width: 50%;
+  }
+
+  .FilmSectionSubtitle {
+    font: 16px/30px $hind-bold;
+    text-transform: uppercase;
+  }
+
+  .FilmSectionContent {
+    @include fluid-type(16px, 18px) font-family: $hind-regular;
+  }
+
+  .FilmPanelist {
+    margin-bottom: 20px;
+    @media (min-width: $bootstrap-md) {
+      margin-bottom: 70px;
+    }
+    .headshot {
+      width: 100%;
+      height: auto;
+      @media (max-width: $bootstrap-md) {
+        margin-bottom: 20px;
+      }
+    }
+
+    .FilmSectionTitle {
+      margin-top: 0;
+    }
+  }
+}

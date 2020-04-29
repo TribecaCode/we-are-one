@@ -1,0 +1,60 @@
+.Film {
+  min-height: 250px;
+  position: relative;
+  margin-bottom: 20px;
+  color: $black;
+  background: $white;
+  display: flex;
+
+  .Film_img-container {
+    min-width: 35%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  @each $name, $value in $colors {
+    .Film_img-container--#{$name} {
+      border-right: 6px solid $value;
+    }
+  }
+
+  .Film_action {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .Film_content {
+    padding: 15px 15px 15px 21px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .btn {
+      margin-bottom: 20px;
+    }
+  }
+  .Film_genre {
+    text-transform: uppercase;
+    font: 14px/30px $montserrat-semibold;
+  }
+  .Film_runtime {
+    font-size: 14px;
+    font-family: $hind-regular;
+  }
+  .Film_title {
+    color: $black;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .Film_summary {
+    font-family: $hind-regular;
+    @include fluid-type(14px, 18px);
+  }
+  .Film_more {
+    color: $black;
+    text-decoration: underline;
+  }
+}

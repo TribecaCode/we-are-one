@@ -1,0 +1,84 @@
+@import "./variables";
+
+.heading-1 {
+  font-family: $montserrat-bold;
+  @include fluid-type(30px, 45px);
+}
+
+.heading-2 {
+  font-family: $montserrat-bold;
+  @include fluid-type(18px, 36px);
+}
+
+.heading-3 {
+  font-family: $montserrat-bold;
+  @include fluid-type(16px, 30px);
+}
+
+.heading-4 {
+  font-family: $montserrat-bold;
+  @include fluid-type(14px, 24px);
+}
+
+.heading-5 {
+  font-family: $montserrat-bold;
+  @include fluid-type(14px, 21px);
+}
+
+.heading-6 {
+  font-family: $montserrat-bold;
+  @include fluid-type(14px, 16px);
+}
+
+.heading-1.black,
+.heading-2.black,
+.heading-3.black,
+.heading-4.black,
+.heading-5.black {
+  color: $black;
+}
+
+.hind-text {
+  font-family: $hind-regular;
+  @include fluid-type(16px, 21px);
+}
+
+small.hind-text {
+  font-family: $hind-regular;
+  @include fluid-type(12px, 14px);
+}
+
+.h-tag {
+  &:before {
+    border-left-width: 0.225rem;
+    content: " ";
+    display: inline-block;
+    margin-left: -15px;
+    margin-right: 10px;
+    border-left: 6px solid black;
+    padding: 0;
+    width: 0;
+  }
+}
+
+.heading-1.h-tag:before {
+  @include fluid-height(16px, 26px);
+}
+
+.heading-2.h-tag:before {
+  @include fluid-height(16px, 26px);
+}
+
+@each $name, $value in $colors {
+  .h-tag--#{$name}:before {
+    border-left: 6px solid $value;
+  }
+}
+
+hr.devider {
+  border-top: 1px solid $brown-grey;
+}
+
+.underlined {
+  text-decoration: underline;
+}

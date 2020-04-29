@@ -1,0 +1,79 @@
+/* Pagination */
+
+.pagination {
+  width: 100%;
+  background: #fff;
+  height: 30px;
+  position: relative;
+
+  margin: 20px auto;
+  text-align: center;
+
+  a,
+  .current,
+  .active,
+  .gap {
+    font: 15px/15px din, Arial, sans-serif;
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 10px 5px 10px;
+    position: relative;
+  }
+
+  .next a,
+  .prev a {
+    width: 33px;
+    height: 30px;
+    padding: 0;
+    display: inline-block;
+    text-indent: -10000px;
+  }
+
+  .prev {
+    position: absolute;
+    left: 0;
+  }
+
+  .next {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .prev a {
+    border-right: 1px solid #f1f1f1;
+
+    span {
+      left: 8px;
+      background-position: 0px -34px;
+    }
+  }
+
+  .next a {
+    border-left: 1px solid #f1f1f1;
+    span {
+      right: 10px;
+    }
+  }
+}
+
+// pagy overrides
+.pagy-nav {
+  .prev a,
+  .next a {
+    background-image: url("/images/sprite-arrows.svg");
+    background-size: 24px 170px;
+  }
+  .prev a {
+    background-position: 5px 132px;
+  }
+
+  .next a {
+    background-position: 2px 174px;
+  }
+
+  .disabled {
+    display: none;
+  }
+}

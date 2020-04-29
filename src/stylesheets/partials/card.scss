@@ -1,0 +1,57 @@
+.Card {
+  color: $black;
+  background: $pale-grey;
+  position: relative;
+  margin-bottom: 20px;
+
+  .Card_action {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    padding: 3px 11px 5px;
+    font-size: 14px;
+    font-family: $montserrat-regular;
+  }
+
+  .Card_img {
+    margin-bottom: 13px;
+    min-height: 250px;
+    background-size: cover;
+    background-position: center;
+
+    .btn-action-wishlist-add,
+    .btn-action-wishlist-remove {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+  }
+
+  @each $name, $value in $colors {
+    .Card_img--#{$name} {
+      border-bottom: 6px solid $value;
+    }
+  }
+
+  .Card_subtitle {
+    font: 14px/18px $montserrat-semibold;
+    margin-bottom: 10px;
+  }
+
+  .Card_title {
+    text-decoration: none;
+    color: $black;
+    font: 24px/30px $montserrat-semibold;
+    display: block;
+    height: 60px;
+    overflow: hidden;
+    text-overflow: elipsis;
+  }
+}
+
+.Card--film {
+  .Card_text-container {
+    padding: 0 10px 10px;
+  }
+}

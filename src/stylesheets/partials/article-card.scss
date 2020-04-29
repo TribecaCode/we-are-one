@@ -1,0 +1,107 @@
+@import "../base/variables";
+
+.article-card {
+  position: relative;
+  padding: 15px;
+  margin-bottom: 30px;
+
+  .left {
+    display: none;
+  }
+
+  .article-author-date-top {
+    display: block;
+    font: bold 14px/18px $hind-medium;
+    color: #141414;
+    margin-bottom: 8px;
+  }
+
+  .article-card_title {
+    a {
+      font: 20px/28px $montserrat-bold;
+      text-decoration: none;
+      color: $black;
+    }
+  }
+
+  .short-summary {
+    font: 16px/21px "hind-regular";
+    color: #141414;
+    display: none;
+  }
+
+  .article-read-more {
+    display: block;
+    font: 18px/30px $hind-medium;
+    color: #141414;
+  }
+
+  @media (min-width: 1000px) {
+    .article-content {
+      margin-left: 20px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding: 40px;
+
+    .left {
+      display: block;
+
+      .article-author,
+      .article-date {
+        padding-right: 10px;
+        float: right;
+      }
+    }
+
+    .article-author-date-top {
+      display: none;
+    }
+
+    .article-title {
+      margin-top: 0;
+    }
+
+    .article-author,
+    .article-date {
+      font: bold 14px/18px $hind-medium;
+      color: #141414;
+      margin-bottom: 8px;
+      clear: right;
+    }
+
+    .article {
+      margin-bottom: 50px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .article-title {
+      a {
+        font: 30px/36px $montserrat-bold;
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .article-date {
+      font: 14px/18px $montserrat-bold;
+    }
+
+    .article-author {
+      font: 24px/40px $montserrat-bold;
+      font-weight: 600;
+    }
+
+    .short-summary {
+      display: block;
+    }
+  }
+}
+
+.article-tribeca {
+  border-radius: 8px;
+  border: solid thin #d8d8d8;
+  padding: 20px;
+}

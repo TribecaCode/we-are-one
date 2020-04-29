@@ -1,0 +1,131 @@
+.bucket_edit_link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3000;
+  background: #f0f;
+  color: black;
+  padding: 0px 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.btn {
+  border-radius: 0 !important;
+  font-family: $montserrat-bold;
+  transition: color 250ms ease;
+  transition: background 250ms ease;
+}
+
+.btn-gold {
+  background: $brownish-orange;
+  color: $white;
+  &:hover,
+  &:focus,
+  &.focus {
+    color: $white !important;
+    background: #be8023;
+  }
+}
+
+.btn-pale {
+  background: $pale-grey;
+  color: $black;
+}
+
+.btn-black {
+  background: $black;
+  color: $white;
+}
+
+.btn-ruby {
+  background: $ruby;
+  color: $white;
+}
+
+.btn-devise {
+  color: $black;
+  border: 1px solid black;
+  padding: 10px 20px;
+}
+
+.btn-festival {
+  color: $white;
+  background: transparent;
+  border: 1px solid $white;
+  padding: 17px 30px;
+
+  &:hover {
+    color: darken($white, 10%);
+  }
+}
+
+@each $name, $value in $colors {
+  .btn-action-#{$name} {
+    background: $value;
+    color: $white;
+    &:hover {
+      color: darken($white, 10%);
+    }
+  }
+}
+
+.btn-schedule {
+  padding: 5px 8px;
+  display: inline-block;
+  border-radius: 50%;
+  color: $black;
+  transition: all 250ms ease-out;
+  &:hover {
+    background: $black;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.btn-schedule.active {
+  background: $black;
+  color: $white;
+}
+
+.btn-apply-filters {
+  color: $white;
+  background: $black;
+
+  &:hover {
+    color: darken($white, 10%);
+  }
+}
+
+.btn-clear-filters {
+  border: 1px solid $black;
+}
+
+.btn-action-wishlist-add {
+  border-radius: 50% !important;
+  background: $pale-grey;
+  color: $ruby;
+  position: relative;
+  padding: 2px 7px;
+
+  &:before {
+    font-size: 1.5em;
+    content: "\f004";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+  }
+}
+
+.btn-action-wishlist-remove {
+  border-radius: 50% !important;
+  background: $dark-grey;
+  color: $white !important;
+  position: relative;
+  padding: 2px 7px;
+
+  &:before {
+    content: "X";
+    font-weight: 400;
+  }
+}

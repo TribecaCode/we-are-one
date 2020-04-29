@@ -1,0 +1,28 @@
+.TicketsCallOut {
+  padding: 13px 11px;
+  margin-bottom: 40px;
+  color: $white;
+  background: $dark-grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: $bootstrap-lg) {
+    padding: 40px 30px;
+    margin-bottom: 63px;
+  }
+
+  h2 {
+    margin: 0;
+    @media (max-width: 640px) {
+      max-width: 280px;
+    }
+
+    @media (min-width: 800px) {
+      max-width: 600px;
+    }
+    @media (min-width: $bootstrap-lg) {
+      max-width: 1200px;
+    }
+  }
+}

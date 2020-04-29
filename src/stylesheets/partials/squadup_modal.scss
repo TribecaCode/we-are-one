@@ -1,0 +1,86 @@
+.modal {
+  z-index: 10050 !important;
+}
+.modal-backdrop {
+  z-index: 10040 !important;
+}
+
+#squadupModal {
+  color: #000;
+
+  .squadup-checkout-nav > a {
+    visibility: hidden !important;
+  }
+  .powered-by-squadup {
+    display: none !important;
+  }
+  div.col-sm-12.squadup-embed-view > div:nth-child(2) > div.text-center:after {
+    display: block;
+    content: url(https://s3.amazonaws.com/checkout.squadup.com/powered-by-squadup.jpg);
+  }
+
+  div.squadup-user-banner > h1 {
+    display: none !important;
+  }
+  .banner-image {
+    margin: 20px 0 !important;
+  }
+  .squadup-checkout-app .squadup-navigation-view-container .squadup-checkout-nav a {
+    color: #db1e66 !important;
+  }
+  .btn-danger {
+    background-color: #db1e66 !important;
+    border-color: #db1e66 !important;
+  }
+  .btn-info {
+    background-color: #6fc7e8 !important;
+    border-color: #6fc7e8 !important;
+    margin-bottom: 10px !important;
+  }
+  .btn-info:hover,
+  .btn-danger:hover {
+    opacity: 0.8 !important;
+  }
+
+  .inner {
+    margin-bottom: 20px !important;
+  }
+
+  .squadup-checkout-app .squadup-checkout-embed-spinner ul.cssload-loader li {
+    background-color: #db1e66 !important;
+    width: 10px;
+    height: 10px;
+    float: right;
+    margin-right: 5px !important;
+  }
+  .squadup-checkout-app
+    .squadup-row-centered
+    > .squadup-navigation-view-container
+    .page-title-ident {
+    color: #db1e66 !important;
+    border-bottom: 1px solid #db1e66 !important;
+  }
+
+  .squadup-checkout-app .squadup-navigation-view-container .squadup-checkout-submit-payment {
+    background-color: #db1e66 !important;
+    border-color: #db1e66 !important;
+  }
+  .squadup-checkout-app .squadup-navigation-view-container .squadup-checkout-submit-payment:hover {
+    opacity: 0.8 !important;
+  }
+  div.event-checkout-detail > button {
+    margin: 0 auto !important;
+    display: block !important;
+    margin-bottom: 10px !important;
+  }
+
+  font-family: din, Arial, sans-serif !important;
+
+  .squadup-checkout-app
+    .squadup-row-centered
+    > .squadup-navigation-view-container
+    .squadup-embed-view {
+    min-height: 0;
+    margin-bottom: 0;
+  }
+}

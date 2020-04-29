@@ -1,0 +1,40 @@
+.WAYLF {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+
+  .WAYLF_link {
+    color: $black;
+    text-decoration: none;
+  }
+}
+
+// @media all and (max-width: 750px) {
+//   .WAYLF {
+//     .WAYLF_question {
+//       font: bold 28px/36px $montserrat-bold;
+//     }
+//
+//     .WAYLF_link {
+//       font: 18px/22px $montserrat-semibold;
+//     }
+//   }
+// }
+//
+// @media all and (max-width: 530px) {
+//   .WAYLF {
+//     .WAYLF_question {
+//       font: bold 18px/23px $montserrat-bold;
+//     }
+//
+//     .WAYLF_link {
+//       font: 14px/16px $montserrat-semibold;
+//     }
+//   }
+// }
+//
+// @media all and (max-width: 360px) {
+//   .WAYLF {
+//     flex-direction: column;
+//   }
+// }

@@ -1,0 +1,663 @@
+// colors
+$ruby: #d1004c;
+$sienna: #b55420;
+$indigo: #5f009e;
+$blue: #0a37ba;
+$jungle-green: #006f4e;
+$black: #000;
+$grey: #d8d8d8;
+$white: #fff;
+$blue-grey: #344154;
+$light-grey: #f7f9fb;
+$dark-grey: #242626;
+$grey: #7e7e7e;
+$gold: #d48f27;
+$pale-grey: #f7f9fb;
+$charcoal: rgba(36, 38, 38, 0.85);
+$brownish-orange: #d48f27;
+$brown-grey: #979797;
+
+// colors used to generate links, butons and borders for various types of films
+$colors: (
+  blue: $blue,
+  brownish-orange: $brownish-orange,
+  jungle-green: $jungle-green,
+  indigo: $indigo,
+  ruby: $ruby,
+  sienna: $sienna
+);
+
+// bootstrap breakpoints
+$bootstrap-xs: 320px;
+$bootstrap-sm: 480px;
+$bootstrap-md: 768px;
+$bootstrap-lg: 992px;
+$bootstrap-xl: 1200px;
+
+$sm: 568px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+
+// fonts
+@font-face {
+  font-family: "Montserrat-regular";
+  src: url("/fonts/montserrat/Montserrat-Regular.otf");
+}
+
+@font-face {
+  font-family: "Montserrat-bold";
+  src: url("/fonts/montserrat/Montserrat-Bold.otf");
+}
+
+@font-face {
+  font-family: "Montserrat-semibold";
+  src: url("/fonts/montserrat/Montserrat-SemiBold.otf");
+}
+
+@font-face {
+  font-family: "hind-regular";
+  src: url("/fonts/hind/hind-regular.otf");
+}
+
+@font-face {
+  font-family: "hind-semibold";
+  src: url("/fonts/hind/hind-semibold.otf");
+}
+
+@font-face {
+  font-family: "hind-medium";
+  src: url("/fonts/hind/hind-medium.otf");
+}
+
+@font-face {
+  font-family: "hind-bold";
+  src: url("/fonts/hind/hind-bold.otf");
+}
+
+$montserrat-regular: "Montserrat-regular";
+$montserrat-semibold: "Montserrat-semibold";
+$montserrat-bold: "Montserrat-bold";
+$hind-semibold: "hind-semibold";
+$hind-medium: "hind-medium";
+$hind-regular: "hind-regular";
+$hind-bold: "hind-bold";
+
+@mixin hoverFade($opacity, $time) {
+  // @include single-transition(opacity, $time, ease-out);
+  transition: opacity $time ease-out;
+  &:hover {
+    // @include opacity($opacity);
+    opacity: $opacity;
+  }
+}
+
+// TYPOGRAPHY
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-font-size, $max-font-size) {
+  $min-vw: 320px;
+  $max-vw: 1200px;
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+@mixin fluid-height($min-font-size, $max-font-size) {
+  $min-vw: 320px;
+  $max-vw: 1200px;
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      height: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        height: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        height: $max-font-size;
+      }
+    }
+  }
+}
+
+// legacy Variables!
+
+// NOTE: Dimensional variables account for padding in .cw
+
+$desktop: 1040px;
+$tablet: 660px;
+$handheld: 499px;
+$maxwidh: 1400px;
+
+// bootstrap breaks
+$bs_sm: 768px;
+$bs_md: 992px;
+$bs_lg: 1200px;
+
+// navbar height;
+$navBarHeight: 64px;
+
+$base-duration: 150ms;
+$base-timing: ease;
+
+// COLORS
+
+// NOTE golden color that we remove because of AT&T
+// $tff_color: #fcaf17;
+// $catFest: #fcaf17;
+
+$tff_color: #000;
+$catFest: #000;
+
+$tribeca_color: #e50a0a;
+$tf_color: #009ad1;
+$fof_color: #49b986;
+$toff_color: #953e8a;
+$mfc_color: #e75925;
+$inno_color: #00d3a6;
+$admin_color: #666;
+
+$catPopular: #e50a0a;
+$catNewsTrends: #2b59bb;
+$catCreators: #fbae1c;
+$catFoF: #74c83c;
+$catMusic: #2cafb9;
+$catTech: #1db0f8;
+$catArtsCulture: #9c35c7;
+$catSocialGood: #fe6e1a;
+$catDigitalStudios: #ea27ab;
+$catTF: #008fd0;
+$catCallSheet: #e50a0a;
+$hein: #008742;
+
+$catNews: #e50a0a;
+$catCulture: #e50a0a;
+$catNyc: #e50a0a;
+$catFilm: #e50a0a;
+
+$iwRed: #ff7574;
+$iwBlue: #3c7dff;
+$iwYellow: #ccea40;
+$iwGreen: #00d3a6;
+
+$tff_fade_color: #ffebc5;
+
+$tribeca_colorAlpha: rgba(32, 0, 11, 0.5);
+$tff_colorAlpha: rgba(41, 1, 36, 0.75);
+$tf_colorAlpha: rgba(0, 39, 54, 0.75);
+$fof_colorAlpha: rgba(73, 185, 134, 0.5);
+
+$generalTextColor: #454848;
+$generalBorderColor: rgba(49, 52, 54, 0.25);
+
+$darkTextColor: #181418;
+$orange: #fd6410;
+// $blue: #2ae8ff;
+
+$site_color_map: (
+  tribeca: $tribeca_color,
+  tff: $tff_color,
+  tf: $tf_color
+);
+
+$section_color_map: (
+  galas: #ccadc2,
+  narrative: #ed9c95,
+  shorts: #97ccef,
+  viewpoints: #79bf81,
+  docs: #007a69,
+  spotlight: #f1c288,
+  midnight: #9c9ece,
+  storyscapes: #eb0675,
+  talks: #c72342,
+  sports: #ed1d24
+);
+
+// FONT STACKS
+$dinstack: din, Arial, sans-serif;
+$dcstack: dincon, Arial, sans-serif;
+$dinpro: dinpro, Arial, sans-serif;
+$din: din, Arial, sans-serif;
+$dincon: dincon, Arial, sans-serif;
+$osstack: Open sans, Arial, sans-serif;
+
+$apercu: apercu, Arial, sans-serif;
+
+$fa: FontAwesome;
+
+// ANIMATION EASING
+
+$bounceOut: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$swiftOut: cubic-bezier(0.55, 0, 0.1, 1);
+
+// MIXINS
+
+@mixin cf {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin viewport($viewer) {
+  @if $viewer == handheld {
+    @media only screen and (max-width: $tablet) {
+      @content;
+    }
+  }
+  //    @else if $viewer == tablet {
+  //      @media only screen and (min-width: $tablet + 1) and (max-width: $desktop - 1) { @content; }
+  //    }
+  @else if $viewer == desktop {
+    @media only screen and (min-width: $desktop) {
+      @content;
+    }
+  }
+}
+
+@mixin max-w($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}
+@mixin min-w($size) {
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin max-h($size) {
+  @media only screen and (max-height: $size) {
+    @content;
+  }
+}
+
+/* Bootstrap breakpoint mixins */
+@mixin bs_xs {
+  @media (max-width: $bs_sm) {
+    @content;
+  }
+}
+@mixin bs_sm {
+  @media (min-width: $bs_sm) {
+    @content;
+  }
+}
+@mixin bs_md {
+  @media (min-width: $bs_md) {
+    @content;
+  }
+}
+@mixin bs_lg {
+  @media (min-width: $bs_lg) {
+    @content;
+  }
+}
+
+/* retina version of pngs */
+@mixin retina {
+  @media only screen and (min--moz-device-pixel-ratio: 2),
+    (-o-min-device-pixel-ratio: 3/2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+@mixin ulreset {
+  ul {
+    padding: 0;
+    margin: 0;
+    // list-style: none;
+  }
+  li {
+    list-style: none;
+  }
+}
+
+@mixin inputreset {
+  border: 0;
+  background: transparent;
+  color: transparent;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+@mixin vCenter {
+  display: block;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+}
+
+@function pxtoem($target, $context: 14px) {
+  @return ($target/$context)+0em;
+}
+
+@mixin hoverFade($opacity, $time) {
+  // @include single-transition(opacity, $time, ease-out);
+  transition: opacity $time ease-out;
+  &:hover {
+    // @include opacity($opacity);
+    opacity: $opacity;
+  }
+}
+
+// Parent must have position!
+@mixin vertcenter {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// LANE
+@mixin noselect {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  outline-width: 0;
+}
+
+@mixin no-pointerevents() {
+  -webkit-pointer-events: none;
+  -moz-pointer-events: none;
+  pointer-events: none;
+}
+
+@mixin anti-alias($on: true) {
+  @if ($on) {
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else {
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+/* universal animations */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
+}
+
+// To simulate associative arrays
+// Source: http://hugogiraudel.com/2013/08/12/sass-functions/#mapping
+@function match($haystack, $needle) {
+  @each $item in $haystack {
+    $index: index($item, $needle);
+    @if $index {
+      $return: if($index == 1, 2, $index);
+      @return nth($item, $return);
+    }
+  }
+  @return false;
+}
+
+/* ~~~~~~~~~~~~~~~~~~
+/* FONTS / ICONS
+/* ~~~~~~~~~~~~~~~ */
+@mixin fontstyles() {
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: none;
+  line-height: 1;
+  white-space: nowrap;
+  font: {
+    style: normal;
+    variant: normal;
+    weight: normal;
+    family: "tribeca", DIN, Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+}
+
+// For adding icons to elements using CSS pseudo-elements
+// inspired by: http://jaydenseric.com/blog/fun-with-sass-and-font-icons
+@mixin icon($position: false, $icon: false, $styles: true, $fallback: true) {
+  // can be applied with or without before
+  // so if one callse  icon() (ie on a plain old 'x' that falls back gloriously) it just applies styles
+  @if $position == false {
+    // @extend %fontstyles;
+    @include fontstyles();
+  } @else {
+    &:#{$position} {
+      @if $icon {
+        content: match($icons, $icon);
+      }
+      @if $styles {
+        // @extend %fontstyles;
+        @include fontstyles();
+      }
+    }
+  }
+
+  @if $fallback {
+    // use with modernizr
+    // and <div class="close_icon"><span class="icon-fallback">x</span> </div>
+
+    .no-fontface & {
+      &:before,
+      &:after {
+        display: none;
+        visibility: hidden;
+      }
+      .icon-fallback,
+      .I__fallback {
+        display: block;
+        display: inline-block;
+      }
+    }
+  }
+  // Include any extra rules supplied for the pseudo-element
+  @content;
+}
+
+// Icon list (corresponds to icon font characters)
+// Note associative arrays will be easier in Sass version 3.3: https://github.com/nex3/sass/issues/642
+$icons: (
+  "tribeca" "T",
+  "tribeca-att" "U",
+  "tribeca-stacked" "A",
+  "facebook" "f",
+  "googleplus" "g",
+  "tumblr" "u",
+  "twitter" "t",
+  "youtube" "y",
+  "stumble-upon" "s",
+  "rss" "r",
+  "pinterest" "p",
+  "instagram" "i",
+  "share" "w",
+  "left" "<",
+  "right" ">",
+  "small-left" "[",
+  "small-right" "]",
+  "down" "{",
+  "up" "}",
+  "plus" "+",
+  "minus" "-",
+  "close" "x",
+  "search" "S",
+  "profile" "P",
+  "survival" "H",
+  "hamburger" "M",
+  "refresh" "R",
+  "info" "I",
+  "comment" "c",
+  "pin" "@",
+  "clock" "C",
+  "camera" "J",
+  "compass" "G",
+  "slideshow" "K",
+  "slides" "V",
+  "list" "W",
+  "star" "*",
+  "eye" "E",
+  "eye-plus" "D",
+  "eye-check" "F",
+  "ticket" "$",
+  "ticket-plus" "#",
+  "ticket-oblique" "%",
+  "grid" "^",
+  "list" "_",
+  "circle" "1",
+  "quarter" "4",
+  "half" "2",
+  "3-quarter" "3"
+);
+
+@-webkit-keyframes clockwise {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes donut-rotate {
+  0% {
+    -webkit-transform: rotate(0);
+  }
+  50% {
+    -webkit-transform: rotate(-140deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+  }
+}
+@keyframes donut-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-140deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@mixin tribeca_loader($color: #000) {
+  .tribeca-loader {
+    margin: 20px auto;
+    .js-hide-loader & {
+      display: none;
+    }
+  }
+  .no-cssanimations {
+    .tribeca-loader {
+      width: 100%;
+      height: 50px;
+      background: transparent url("/assets/lane_preloader_fallback.gif") 50% 50% no-repeat;
+    }
+  }
+
+  .cssanimations {
+    .tribeca-loader {
+      position: relative;
+      left: 50%;
+      margin-left: -15px;
+    }
+    .tribeca-loader__icn {
+      opacity: 0.75;
+      width: 14px;
+      height: 14px;
+      -webkit-animation: clockwise 500ms linear infinite;
+      animation: clockwise 500ms linear infinite;
+    }
+    .tribeca-loader__cut {
+      position: relative;
+      width: 7px;
+      height: 14px;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .tribeca-loader__donut--fake {
+      box-sizing: border-box;
+      width: 14px;
+      height: 14px;
+      border: 2px solid red;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: none;
+      margin: 0;
+    }
+    .tribeca-loader__donut {
+      box-sizing: border-box;
+      width: 14px;
+      height: 14px;
+      border: 2px solid $color;
+      border-radius: 50%;
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      position: absolute;
+      top: 0;
+      left: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: none;
+      margin: 0;
+      -webkit-animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite;
+      animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite;
+    }
+  }
+}

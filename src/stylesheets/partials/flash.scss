@@ -1,0 +1,23 @@
+.flash {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  cursor: pointer;
+  font: 14px/1 $hind-regular;
+  text-align: center;
+  padding: 12px 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: #ffe89e;
+
+  .fa-times {
+    position: absolute;
+    right: 26px;
+  }
+
+  &.notice {
+    background: #666;
+    color: #fff;
+  }
+}

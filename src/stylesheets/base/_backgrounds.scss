@@ -1,0 +1,76 @@
+// animates background color/gradient
+@keyframes animateBackground {
+  25% {
+    background-position: 0 100%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+// takes animates background
+@mixin animateBackground($v0, $v1) {
+  background: radial-gradient(circle, $v0, $v1);
+  background-size: 400%;
+  animation: animateBackground 15s ease-in-out infinite;
+}
+
+// takes in 4 colors and somehow makes background out of it.
+@mixin QuadVertexColors($v0, $v1, $v2, $v3) {
+  position: relative;
+  background: linear-gradient(to bottom, $v0, $v2);
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: linear-gradient(to bottom, $v1, $v3);
+    -webkit-mask-image: linear-gradient(to left, white, transparent);
+  }
+}
+
+.bg-wrapper {
+  padding-bottom: 50px;
+}
+
+.bg-white {
+  background: $white;
+}
+
+.bg-pale {
+  background: $pale-grey;
+}
+
+.bg-page {
+  @include QuadVertexColors(black, #422f0e, #14152a, #201d1a);
+}
+
+.bg-festival {
+  @include QuadVertexColors(#3a0a1b, #422f0e, #0c0d1b, #0e1040);
+}
+
+.bg-tv {
+  @include QuadVertexColors(black, #0a3d2e, #0e2519, #1e1b21);
+}
+
+.bg-films {
+  @include QuadVertexColors(black, #68072b, #4d1127, #201b1d);
+}
+
+.bg-orange {
+  @include QuadVertexColors(black, #5f2303, #3f2208, #201d1a);
+}
+
+.bg-immersive {
+  @include QuadVertexColors(#1e1b21, #2c1147, #2a1242, black);
+}
+
+.bg-talks {
+  @include QuadVertexColors(black, #0e235f, #0f1938, #201b1d);
+}

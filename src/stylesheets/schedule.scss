@@ -1,0 +1,23 @@
+.we_are_one-schedule {
+  .ScheduleTime {
+    @include fluid-type(16px, 30px);
+    font-family: $hind-bold;
+    color: $black;
+  }
+
+  .ScheduleTime--spaced {
+    margin-bottom: 15px;
+  }
+
+  hr.devider {
+    margin-top: 60px;
+  }
+
+  .ScheduleNav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-top: 1px solid $brown-grey;
+    padding: 5px 0;
+  }
+}
