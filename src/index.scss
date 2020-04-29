@@ -1,0 +1,65 @@
+// include only grid from purecss
+@import "~bootstrap/dist/css/bootstrap";
+
+// $slick-font-path: "~slick-carousel/slick/fonts/";
+// $slick-loader-path: "~slick-carousel/slick/";
+// @import "~slick-carousel/slick/slick", "~slick-carousel/slick/slick-theme";
+
+// $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+// @import "~@fortawesome/fontawesome-free/scss/fontawesome";
+// @import "~@fortawesome/fontawesome-free/scss/regular";
+// @import "~@fortawesome/fontawesome-free/scss/solid";
+// @import "~@fortawesome/fontawesome-free/scss/brands";
+
+@import "./stylesheets/base/base";
+
+@import "./stylesheets/partials/default-nav";
+@import "./stylesheets/partials/festival-nav";
+@import "./stylesheets/partials/filters";
+@import "./stylesheets/partials/dates-banner";
+@import "./stylesheets/partials/footer";
+@import "./stylesheets/partials/PageHeader"; // .page-header conflicts with other css
+@import "./stylesheets/partials/PageBreadcrumbs"; // .page-header conflicts with other css
+@import "./stylesheets/partials/article-card";
+@import "./stylesheets/partials/film";
+@import "./stylesheets/partials/card";
+@import "./stylesheets/partials/flash";
+@import "./stylesheets/partials/scrollable_nav";
+@import "./stylesheets/partials/pagination";
+@import "./stylesheets/partials/preseason_text";
+@import "./stylesheets/partials/what_are_you_looking_for";
+@import "./stylesheets/partials/squadup_modal";
+@import "./stylesheets/partials/section";
+@import "./stylesheets/partials/press_banner";
+@import "./stylesheets/partials/what_are_you_looking_for";
+@import "./stylesheets/partials/error-stripe";
+@import "./stylesheets/partials/page-marquee";
+@import "./stylesheets/partials/ticket-callout";
+@import "./stylesheets/partials/featured";
+@import "./stylesheets/partials/carousel";
+
+@import "./stylesheets/landing/home2020";
+@import "./stylesheets/articles/index";
+@import "./stylesheets/articles/show";
+@import "./stylesheets/festival/home";
+@import "./stylesheets/festival/schedule";
+@import "./stylesheets/festival/at_a_glance.scss";
+@import "./stylesheets/festival/immersive-modal.scss";
+@import "./stylesheets/films/index";
+@import "./stylesheets/films/show";
+@import "./stylesheets/landing/browse";
+@import "./stylesheets/landing/discover";
+@import "./stylesheets/landing/home2020";
+@import "./stylesheets/landing/map";
+@import "./stylesheets/landing/tickets";
+@import "./stylesheets/landing/order-confirmation";
+@import "./stylesheets/pages/devise";
+@import "./stylesheets/pages/press_releases";
+@import "./stylesheets/pages/show";
+@import "./stylesheets/releases/index";
+@import "./stylesheets/screeningrooms/show";
+@import "./stylesheets/studios/index";
+@import "./stylesheets/studios/show";
+@import "./stylesheets/tribeca_nows/index";
+@import "./stylesheets/tribecafilms/index";
+@import "./stylesheets/bookmarks/index";
