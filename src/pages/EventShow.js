@@ -13,9 +13,8 @@ const EventShow = () => {
               <div class="row">
                 <div class="hidden-xs hidden-sm col-md-9">
                   <div class="PageBreadcrumbs">
-                    <a href="/">Home</a> »
-                    <a href="/festival">Festival Guide</a> »
-                    <a href="/festival/film">Films</a> » Marvelous and The Black Hole
+                    <a href="/">Schedule</a> »
+                    <a href="/events"> Browse</a> » Marvelous and The Black Hole
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
