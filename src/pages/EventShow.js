@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Details = () => {
+const EventShow = () => {
   return (
     <div>
       <h1>details page</h1>
@@ -8,4 +8,4 @@ const Details = () => {
   )
 }
 
-export default Details
+export default EventShow
