@@ -57,7 +57,7 @@ $xl: 1280px;
 
 @font-face {
   font-family: "hind-regular";
-  src: url("/fonts/hind/hind-regular.otf");
+  src: url("https://fonts.googleapis.com/css2?family=Hind:wght@400&display=swap");
 }
 
 @font-face {
@@ -75,13 +75,13 @@ $xl: 1280px;
   src: url("/fonts/hind/hind-bold.otf");
 }
 
-$montserrat-regular: "Montserrat-regular";
-$montserrat-semibold: "Montserrat-semibold";
-$montserrat-bold: "Montserrat-bold";
-$hind-semibold: "hind-semibold";
-$hind-medium: "hind-medium";
-$hind-regular: "hind-regular";
-$hind-bold: "hind-bold";
+$montserrat-regular: 400 Montserrat;
+$montserrat-semibold: 600 Montserrat;
+$montserrat-bold: 700 Montserrat;
+$hind-regular: 400 Hind;
+$hind-medium: 500 Hind;
+$hind-semibold: 600 Hind;
+$hind-bold: 700 Hind;
 
 @mixin hoverFade($opacity, $time) {
   // @include single-transition(opacity, $time, ease-out);
