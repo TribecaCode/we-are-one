@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "@reach/router"
 
 const Event = ({ item }) => {
-  let img_src = item.photo_1.medium.url
+  let img_src = item.marquee.medium.url
   if (img_src === "/images/graphic-no-image.jpg") {
     img_src = "//tribecafilm.com/images/graphic-no-image.jpg"
   }

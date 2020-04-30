@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from '@reach/router'
 import Panelist from './Panelist'
+import Carousel from './Carousel'
 
 const EventShow = ({ items, slug }) => {
   const item = items.find(e => e.slug === slug )
 
-  let img_src = item.photo_1.full.url
+  let img_src = item.marquee.full.url
   if (img_src === "/images/graphic-no-image.jpg") {
     img_src = "//tribecafilm.com/images/graphic-no-image.jpg"
   }
@@ -58,6 +59,8 @@ const EventShow = ({ items, slug }) => {
                 </div>
                 <h1 className="heading-1 FilmTitle">{item.display_title}</h1>
                 <div className="FilmSynopsis" dangerouslySetInnerHTML={{__html: item.synopsis}} />
+                {!!item.images.length && <Carousel title={item.display_title} images={item.images} /> }
+
               </div>
               <div className="col-xs-12 col-lg-4 Screenings"></div>
             </div>
