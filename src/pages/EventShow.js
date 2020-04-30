@@ -5,11 +5,16 @@ import Panelist from './Panelist'
 const EventShow = ({ items, slug }) => {
   const item = items.find(e => e.slug === slug )
 
+  let img_src = item.photo_1.full.url
+  if (img_src === "/images/graphic-no-image.jpg") {
+    img_src = "//tribecafilm.com/images/graphic-no-image.jpg"
+  }
+
   return (
     <div className="films-show">
       <div className="FilmHeader">
         <div className="container FilmHeader_img-container">
-          <img className="img-responsive center-block" alt={item.display_title} src="https://tribecafilm-production.s3.amazonaws.com/uploads/film/photo_1/4137/full_Tribeca_Marvelous_and_the_Black_Hole_1_1080p.png" />
+          <img className="img-responsive center-block" alt={item.display_title} src={img_src} />
           <div className="FilmHeader__mask"></div>
 
           <div className="FilmHeader__content">

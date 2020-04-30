@@ -2,12 +2,17 @@ import React from 'react'
 import { Link } from "@reach/router"
 
 const Event = ({ item }) => {
+  let img_src = item.photo_1.medium.url
+  if (img_src === "/images/graphic-no-image.jpg") {
+    img_src = "//tribecafilm.com/images/graphic-no-image.jpg"
+  }
+
   return (
     <React.Fragment>
       <div className="visible-xs">
         <div className="Card Card--film">
           <Link to={`/events/${item.slug}`}>
-            <div className="Card_img Card_img--ruby" style={{backgroundImage: "url(/images/graphic-no-image.jpg)"}}></div>
+            <div className="Card_img Card_img--ruby" style={{backgroundImage: `url(${img_src})`}}></div>
           </Link>
           <div className="Card_text-container">
             <div className="Card_subtitle"></div>
@@ -18,7 +23,7 @@ const Event = ({ item }) => {
 
       <div className="hidden-xs col-sm-12">
         <div className="Film">
-          <Link className="Film_img-container Film_img-container--ruby" style={{backgroundImage: "url(/images/graphic-no-image.jpg)"}} to={`/events/${item.slug}`} item={item}/>
+          <Link className="Film_img-container Film_img-container--ruby" style={{backgroundImage: `url(${img_src})`}} to={`/events/${item.slug}`} item={item}/>
           <div className="Film_content">
             <div>
               <div className="pull-right">
