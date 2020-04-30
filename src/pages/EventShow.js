@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from '@reach/router'
+import Panelist from './Panelist'
 
 const EventShow = ({ items, slug }) => {
   const item = items.find(e => e.slug === slug )
@@ -58,22 +59,31 @@ const EventShow = ({ items, slug }) => {
 
             <div className="row">
               <div className="col-xs-12 col-lg-8">
-                <hr className="divider" />
-                <h2 className="FilmSectionTitle">CAST &amp; CREDITS</h2>
-                {/* <h3 className="FilmSectionTitle director">Directed by {item.director}</h3> */}
-                {/* <div className="FilmSectionContent" dangerouslySetInnerHTML={{__html: item.director_bio}} /> */}
+                {!!item.cast_credits.length && (
+                  <div>
+                    <hr className="divider" />
+                    <h2 className="FilmSectionTitle">CAST &amp; CREDITS</h2>
+                    <br />
+                    <br />
 
-                <br />
-                <br />
-
-                <div className="FilmSectionBlocks">
-                  {item.cast_credits.map((credit, i) => (
-                    <div className="FilmSectionBlock" key={i}>
-                      <div className="FilmSectionSubtitle">{credit.title}</div>
-                      <div className="FilmSectionContent">{credit.name}</div>
+                    <div className="FilmSectionBlocks">
+                      {item.cast_credits.map((credit, i) => (
+                        <div className="FilmSectionBlock" key={i}>
+                          <div className="FilmSectionSubtitle">{credit.title}</div>
+                          <div className="FilmSectionContent">{credit.name}</div>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
+                )}
+
+                {!!item.panelists.length && (
+                <div>
+                  <hr className="devider" />
+                  <h2 className="FilmSectionTitle">PANELISTS</h2>
+                  {item.panelists.map((p, i) => <Panelist panelist={p} key={i}/>)}
                 </div>
+                )}
               </div>
             </div>
           </div>
