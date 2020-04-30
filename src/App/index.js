@@ -13,10 +13,10 @@ function App() {
 
   useEffect(() => {
     async function fetchFilms() {
-      axios.get(`https://tribecafilm.com/api/we-are-one`).then(res => {
+      axios.get(`http://localhost:3000/api/we-are-one`).then(res => {
         setState({
           isLoading: false,
-          items: res.data,
+          items: res.data.events,
         })
       })
     }
