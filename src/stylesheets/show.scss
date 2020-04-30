@@ -50,7 +50,8 @@
       @include fluid-type(20px, 30px);
     }
     .heading-4 {
-      font-family: $montserrat-semibold;
+      font-family: Montserrat;
+      font-weight: 600;
     }
   }
 
@@ -67,7 +68,8 @@
   }
 
   .FilmSubtitle {
-    font: 14px/18px $montserrat-semibold;
+    font: 14px/18px Montserrat;
+    font-weight: 600;
     text-transform: uppercase;
     @media (max-width: $bootstrap-sm) {
       text-align: center;
@@ -92,23 +94,26 @@
 
     span {
       color: $dark-grey;
-      font: 16px/30px $hind-medium;
+      font: 500 16px/30px Hind;
       border-top: 1px solid $dark-grey;
     }
   }
 
   .FilmSynopsis {
     margin-bottom: 20px;
-    font-family: $hind-medium;
+    font-family: Hind;
+    font-weight: 500;
     @include fluid-type(16px, 21px);
     color: #141414;
   }
 
   .FilmSectionTitle {
-    font: 24px/30px $montserrat-semibold;
+    font: 24px/30px Montserrat;
+    font-weight: 600;
   }
   .FilmSectionTitle.director {
-    font-family: $hind-medium;
+    font-family: Hind;
+    font-weight: 500;
   }
 
   .Screenings {
@@ -129,18 +134,21 @@
       }
 
       .ScreeningDate {
-        font-family: $hind-medium;
+        font-family: Hind;
+        font-weight: 500;
         @include fluid-type(18px, 21px);
       }
       .ScreeningVenue {
         cursor: pointer;
         text-decoration: none;
         color: $white;
-        font-family: $hind-regular;
+        font-family: Hind;
+        font-weight: 400;
         @include fluid-type(16px, 18px);
       }
       .ScreeningKind {
-        font-family: $hind-regular;
+        font-family: Hind;
+        font-weight: 400;
         @include fluid-type(14px, 16px);
       }
       .fas {
@@ -148,7 +156,8 @@
       }
       .ScreeningBuy {
         color: $white;
-        font: 12px/20px $hind-regular;
+        font: 12px/20px Hind;
+        font-weight: 400;
 
         a {
           color: $white;
@@ -157,7 +166,8 @@
       }
 
       .ScreeningNote {
-        font-family: $hind-regular;
+        font-family: Hind;
+        font-weight: 400;
         font-size: 12px;
       }
     }
@@ -172,14 +182,16 @@
         padding: 0px 14px 4px;
         background: #d8d8d8;
         color: $black;
-        font: 14px/18px $montserrat-semibold;
+        font: 14px/18px Montserrat;
+        font-weight: 600;
       }
     }
   }
 
   .rush-note {
     color: $black;
-    font: 14px/20px $hind-regular;
+    font: 14px/20px Hind;
+    font-weight: 400;
   }
 
   .FilmSectionBlocks {
@@ -193,12 +205,14 @@
   }
 
   .FilmSectionSubtitle {
-    font: 16px/30px $hind-bold;
+    font: 700 16px/30px Hind;
     text-transform: uppercase;
   }
 
   .FilmSectionContent {
-    @include fluid-type(16px, 18px) font-family: $hind-regular;
+    @include fluid-type(16px, 18px);
+    font-family: Hind;
+    font-weight: 400;
   }
 
   .FilmPanelist {

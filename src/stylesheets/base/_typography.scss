@@ -1,32 +1,38 @@
 @import "./variables";
 
 .heading-1 {
-  font-family: $montserrat-bold;
+  font-family: Montserrat;
+  font-weight: 700;
   @include fluid-type(30px, 45px);
 }
 
 .heading-2 {
-  font-family: $montserrat-bold;
+  font-family: Montserrat;
+  font-weight: 700;
   @include fluid-type(18px, 36px);
 }
 
 .heading-3 {
-  font-family: $montserrat-bold;
+  font-family: Montserrat;
+  font-weight: 700;
   @include fluid-type(16px, 30px);
 }
 
 .heading-4 {
-  font-family: $montserrat-bold;
+  font-family: Montserrat;
+  font-weight: 700;
   @include fluid-type(14px, 24px);
 }
 
 .heading-5 {
-  font-family: $montserrat-bold;
+  font-family: Montserrat;
+  font-weight: 700;
   @include fluid-type(14px, 21px);
 }
 
 .heading-6 {
-  font-family: $montserrat-bold;
+  font-family: Montserrat;
+  font-weight: 700;
   @include fluid-type(14px, 16px);
 }
 
@@ -39,12 +45,14 @@
 }
 
 .hind-text {
-  font-family: $hind-regular;
+  font-family: Hind;
+  font-weight: 400;
   @include fluid-type(16px, 21px);
 }
 
 small.hind-text {
-  font-family: $hind-regular;
+  font-family: Hind;
+  font-weight: 400;
   @include fluid-type(12px, 14px);
 }
 

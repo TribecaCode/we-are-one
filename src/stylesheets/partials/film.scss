@@ -37,11 +37,13 @@
   }
   .Film_genre {
     text-transform: uppercase;
-    font: 14px/30px $montserrat-semibold;
+    font: 14px/30px Montserrat;
+    font-weight: 600;
   }
   .Film_runtime {
     font-size: 14px;
-    font-family: $hind-regular;
+    font-family: Hind;
+    font-weight: 400;
   }
   .Film_title {
     color: $black;
@@ -50,7 +52,8 @@
     }
   }
   .Film_summary {
-    font-family: $hind-regular;
+    font-family: Hind;
+    font-weight: 400;
     @include fluid-type(14px, 18px);
   }
   .Film_more {

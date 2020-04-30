@@ -1,7 +1,8 @@
 .we_are_one-schedule {
   .ScheduleTime {
     @include fluid-type(16px, 30px);
-    font-family: $hind-bold;
+    font-family: Hind;
+    font-weight: 700;
     color: $black;
   }
 

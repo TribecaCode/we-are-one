@@ -36,14 +36,16 @@
   }
 
   .Card_subtitle {
-    font: 14px/18px $montserrat-semibold;
+    font: 14px/18px Montserrat;
+    font-weight: 600;
     margin-bottom: 10px;
   }
 
   .Card_title {
     text-decoration: none;
     color: $black;
-    font: 24px/30px $montserrat-semibold;
+    font: 24px/30px Montserrat;
+    font-weight: 600;
     display: block;
     height: 60px;
     overflow: hidden;
