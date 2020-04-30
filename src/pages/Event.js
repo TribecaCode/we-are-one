@@ -11,14 +11,14 @@ const Event = ({ item }) => {
           </Link>
           <div className="Card_text-container">
             <div className="Card_subtitle"></div>
-            <Link className="Card_title" to={`/events/${item.slug}`} title="Pretty People">{item.display_title}</Link>
+            <Link className="Card_title" to={`/events/${item.slug}`} title="Pretty People" item={item}>{item.display_title}</Link>
           </div>
         </div>
       </div>
 
       <div className="hidden-xs col-sm-12">
         <div className="Film">
-          <Link className="Film_img-container Film_img-container--ruby" style={{backgroundImage: "url(/images/graphic-no-image.jpg)"}} to={`/events/${item.slug}`}></Link>
+          <Link className="Film_img-container Film_img-container--ruby" style={{backgroundImage: "url(/images/graphic-no-image.jpg)"}} to={`/events/${item.slug}`} item={item}/>
           <div className="Film_content">
             <div>
               <div className="pull-right">
