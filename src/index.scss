@@ -12,30 +12,11 @@
 
 @import "./stylesheets/base/base";
 
-// @import "./stylesheets/partials/default-nav";
-// @import "./stylesheets/partials/festival-nav";
 @import "./stylesheets/partials/filters";
-// @import "./stylesheets/partials/dates-banner";
-// @import "./stylesheets/partials/footer";
-// @import "./stylesheets/partials/PageHeader"; // .page-header conflicts with other css
-@import "./stylesheets/partials/PageBreadcrumbs"; // .page-header conflicts with other css
-// @import "./stylesheets/partials/article-card";
+@import "./stylesheets/partials/dates-banner";
+@import "./stylesheets/partials/PageBreadcrumbs";
 @import "./stylesheets/partials/film";
 @import "./stylesheets/partials/card";
-// @import "./stylesheets/partials/flash";
-// @import "./stylesheets/partials/scrollable_nav";
-// @import "./stylesheets/partials/pagination";
-// @import "./stylesheets/partials/preseason_text";
-// @import "./stylesheets/partials/what_are_you_looking_for";
-// @import "./stylesheets/partials/squadup_modal";
-// @import "./stylesheets/partials/section";
-// @import "./stylesheets/partials/press_banner";
-// @import "./stylesheets/partials/what_are_you_looking_for";
-// @import "./stylesheets/partials/error-stripe";
-// @import "./stylesheets/partials/page-marquee";
-// @import "./stylesheets/partials/ticket-callout";
-// @import "./stylesheets/partials/featured";
 @import "./stylesheets/partials/carousel";
-
 @import "./stylesheets/schedule";
 @import "./stylesheets/show";
