@@ -35,30 +35,6 @@ function Filters() {
     selected_films
   } = state
 
-  const clearFilters = e => {
-    e.preventDefault()
-    const new_state = {
-      ...state,
-      selected_films: state.all_films,
-      selected_kinds: [],
-    }
-    setState(new_state)
-  }
-
-  const canSearch = () => {
-    if (state.selected_kinds.length) return true
-  }
-
-  const search = e => {
-    e.preventDefault()
-
-    const params = {
-      kinds: state["selected_kinds"],
-    }
-    const search = qs.stringify(params, { arrayFormat: "bracket" })
-    window.location = `/festival?${search}`
-  }
-
   const toggleCheckbox = (type, name) => e => {
     const cur_selected_items = state[type]
     const new_selected_items = xor(cur_selected_items, [name])
@@ -147,7 +123,7 @@ function Filters() {
         </div>
         <div className="spacer"></div>
         <div className="FiltersNavRight ">
-          <Link className="FiltersNavLink FiltersNavLink active" to="#schedule">
+          <Link className="FiltersNavLink FiltersNavLink" to="/">
             SCHEDULE
           </Link>
           <Link className="FiltersNavLink" to="/events">
@@ -163,29 +139,18 @@ function Filters() {
           <div className="container FiltersContent">
             {/* <SearchForm klass="FiltersNavSearchXS" /> */}
 
-            <form onSubmit={search}>
-              <div className="row FilterContentInner">
-                <div className="col-xs-12 col-lg-2 FilterContentSection">
-                  <div className="row">
-                    <Section
-                      title="TYPE OF FILM"
-                      type="selected_kinds"
-                      items={all_kinds}
-                      klass="col-xs-12 "
-                    />
-                  </div>
+            <div className="row FilterContentInner">
+              <div className="col-xs-12 col-lg-2 FilterContentSection">
+                <div className="row">
+                  <Section
+                    title="TYPE OF FILM"
+                    type="selected_kinds"
+                    items={all_kinds}
+                    klass="col-xs-12 "
+                  />
                 </div>
               </div>
-              <div className="FiltersContentActions">
-                <button className="btn btn-clear-filters" onClick={clearFilters}>
-                  CLEAR FILTERS
-                </button>
-                {/* <div className="FiltersContentActionsCount">{selected_films.length}</div> */}
-                <button type="submit" className="btn btn-apply-filters" disabled={!canSearch()}>
-                  APPLY FILTERS
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       )}
