@@ -30,16 +30,10 @@ function Filters() {
           all_films: res.data.films,
           all_categories: FILM_CATEGORIES,
           all_kinds: getKinds(res.data.films),
-          all_genres: getGenres(res.data.films),
-          all_theaters: getTheaters(res.data.films),
-          all_sections: res.data.sections.map(s => ({ name: s.id, value: s.title })),
 
           selected_films: selected_films,
-          selected_genres: search.selected_genres,
           selected_categories: search.selected_categories,
           selected_kinds: search.selected_kinds,
-          selected_sections: search.selected_sections,
-          selected_theaters: search.selected_theaters
         })
       })
     }
@@ -49,10 +43,7 @@ function Filters() {
   const {
     isLoading,
     all_categories,
-    all_genres,
     all_kinds,
-    all_sections,
-    all_theaters,
     selected_films
   } = state
 
@@ -61,11 +52,8 @@ function Filters() {
     const new_state = {
       ...state,
       selected_films: state.all_films,
-      selected_genres: [],
       selected_kinds: [],
       selected_categories: [],
-      selected_sections: [],
-      selected_theaters: []
     }
     setState(new_state)
   }
@@ -73,9 +61,6 @@ function Filters() {
   const canSearch = () => {
     if (state.selected_kinds.length) return true
     if (state.selected_categories.length) return true
-    if (state.selected_genres.length) return true
-    if (state.selected_sections.length) return true
-    if (state.selected_theaters.length) return true
   }
 
   const search = e => {
@@ -84,9 +69,6 @@ function Filters() {
     const params = {
       categories: state["selected_categories"],
       kinds: state["selected_kinds"],
-      genres: state["selected_genres"],
-      sections: state["selected_sections"],
-      theaters: state["selected_theaters"]
     }
     const search = qs.stringify(params, { arrayFormat: "bracket" })
     window.location = `/festival?${search}`
@@ -107,12 +89,6 @@ function Filters() {
         return selected_films.filter(f => f.category === name).length
       case "selected_kinds":
         return selected_films.filter(f => f.kind === name).length
-      case "selected_genres":
-        return selected_films.filter(f => f.genres.includes(name)).length
-      case "selected_theaters":
-        return selected_films.filter(f => f.cached_theaters.includes(name)).length
-      case "selected_sections":
-        return selected_films.filter(f => f.section_id === name).length
       default:
         return 0
     }
@@ -124,18 +100,6 @@ function Filters() {
         return selected_films.map(f => f.category).includes(name)
       case "selected_kinds":
         return selected_films.map(f => f.kind).includes(name)
-      case "selected_genres":
-        return selected_films
-          .map(f => f.genres)
-          .flat()
-          .includes(name)
-      case "selected_theaters":
-        return selected_films
-          .map(f => f.cached_theaters)
-          .flat()
-          .includes(name)
-      case "selected_sections":
-        return selected_films.map(f => f.section_id).includes(name)
       default:
         return true
     }
@@ -237,19 +201,6 @@ function Filters() {
                     />
                   </div>
                 </div>
-
-                <Section
-                  title="GENRES & TYPES"
-                  type="selected_genres"
-                  items={all_genres}
-                  klass="col-xs-12 col-lg-4 FilterContentSection"
-                />
-                <Section
-                  title="SECTION"
-                  type="selected_sections"
-                  items={all_sections}
-                  klass="col-xs-12 col-lg-3 FilterContentSection"
-                />
               </div>
               <div className="FiltersContentActions">
                 <button className="btn btn-clear-filters" onClick={clearFilters}>
@@ -270,26 +221,10 @@ function Filters() {
 
 export default Filters
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   ReactDOM.render(<Filters />, document.getElementById("filters"))
-// })
-
 function getKinds(films) {
   let films_kinds = films.map(f => f.kind).filter(k => !!k)
   let uniq_sorted_kinds = Array.from(new Set(films_kinds)).sort()
   return uniq_sorted_kinds.map(kind => ({ name: kind, value: kind }))
-}
-
-function getGenres(films) {
-  let films_genres = films.map(f => f.genres).flat()
-  let uniq_sorted_genres = Array.from(new Set(films_genres)).sort()
-  return uniq_sorted_genres.map(genre => ({ name: genre, value: genre }))
-}
-
-function getTheaters(films) {
-  let films_theaters = films.map(f => f.cached_theaters).flat()
-  let uniq_sorted_theaters = Array.from(new Set(films_theaters)).sort()
-  return uniq_sorted_theaters.map(theater => ({ name: theater, value: theater }))
 }
 
 function toggleFilters() {
@@ -316,36 +251,12 @@ function filterFilms(films, state) {
     remaining_films = remaining_films.filter(film => state.selected_kinds.includes(film.kind))
   }
 
-  // filter genres
-  if (state.selected_genres.length) {
-    remaining_films = remaining_films.filter(film =>
-      state.selected_genres.every(genre => film.genres.includes(genre))
-    )
-  }
-
-  // filter genres
-  if (state.selected_theaters.length) {
-    remaining_films = remaining_films.filter(film =>
-      state.selected_theaters.every(theater => film.cached_theaters.includes(theater))
-    )
-  }
-
-  // filter sections
-  if (state.selected_sections.length) {
-    remaining_films = remaining_films.filter(film =>
-      state.selected_sections.includes(film.section_id)
-    )
-  }
-
   return remaining_films
 }
 
 function paramsToSelected() {
   let search = qs.parse(window.location.search, { arrayFormat: "bracket", parseNumbers: true })
   search.selected_categories = search.categories || []
-  search.selected_genres = search.genres || []
-  search.selected_sections = search.sections || []
-  search.selected_theaters = search.theaters || []
   search.selected_kinds = search.kinds || []
   return search
 }
