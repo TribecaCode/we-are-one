@@ -10,6 +10,7 @@ import Filters from '../shared/Filters'
 import Schedule from '../pages/Schedule'
 import EventsIndex from '../pages/EventsIndex'
 import EventShow from '../pages/EventShow'
+import About from '../pages/About'
 
 function App() {
   const [state, setState] = useState({
@@ -69,6 +70,7 @@ function App() {
         <Schedule path="/" items={selected_events} />
         <EventsIndex path="/events" items={selected_events} />
         <EventShow path="/events/:slug" items={all_events} />
+        <About path="/about" />
       </Router>
     </div>
   );
