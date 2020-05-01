@@ -5,15 +5,6 @@ import qs from "query-string"
 import $ from "jquery"
 import { Link } from '@reach/router'
 
-export const FILM_CATEGORIES = [
-  { name: "film", value: "Film" },
-  { name: "games", value: "Games" },
-  { name: "immersive", value: "Immersive" },
-  { name: "tv", value: "TV" },
-  { name: "n-o-w", value: "N.O.W." },
-  { name: "talk", value: "Talk" }
-]
-
 function Filters() {
   const [state, setState] = useState({
     isLoading: true
@@ -28,7 +19,6 @@ function Filters() {
           isLoading: false,
 
           all_films: res.data.films,
-          all_categories: FILM_CATEGORIES,
           all_kinds: getKinds(res.data.films),
 
           selected_films: selected_films,
@@ -42,7 +32,6 @@ function Filters() {
 
   const {
     isLoading,
-    all_categories,
     all_kinds,
     selected_films
   } = state
@@ -108,7 +97,6 @@ function Filters() {
   const Section = ({ title, items, type, klass }) => {
     return (
       <div className={`${klass}`}>
-        <h5 className="FilterContentSectionTitle">{title}</h5>
         <ul className={`FilterContentList FilterContentList--${type}`}>
           {items.map(({ name, value }) => {
             const isDisabled = !isActive(type, name)
@@ -187,12 +175,6 @@ function Filters() {
               <div className="row FilterContentInner">
                 <div className="col-xs-12 col-lg-2 FilterContentSection">
                   <div className="row">
-                    <Section
-                      title="TYPE OF EVENT"
-                      type="selected_categories"
-                      items={all_categories}
-                      klass="col-xs-12"
-                    />
                     <Section
                       title="TYPE OF FILM"
                       type="selected_kinds"
