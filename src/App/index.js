@@ -20,13 +20,13 @@ function App() {
     async function fetchFilms() {
       axios.get(`http://localhost:3000/api/we-are-one`).then(res => {
         const search = paramsToSelected()
-        const selected_items = filterFilms(res.data.events, search)
+        const selected_events = filterFilms(res.data.events, search)
         setState({
           isLoading: false,
-          all_items: res.data.events,
+          all_events: res.data.events,
           all_kinds: getKinds(res.data.events),
 
-          selected_items: selected_items,
+          selected_events: selected_events,
           selected_kinds: search.selected_kinds
         })
       })
@@ -35,9 +35,9 @@ function App() {
   }, [])
 
   const { isLoading,
-    all_items,
+    all_events,
     all_kinds,
-    selected_items,
+    selected_events,
     selected_kinds
   } = state
 
@@ -47,12 +47,11 @@ function App() {
   }
 
   const toggleCheckbox = (type, name) => e => {
-    console.log('toggle', type, name)
     const cur_selected_items = state[type]
     const new_selected_items = xor(cur_selected_items, [name])
     let new_state = { ...state, [type]: new_selected_items }
-    const new_selected_films = filterFilms(state.all_items, new_state)
-    new_state = { ...new_state, selected_items: new_selected_films }
+    const new_selected_films = filterFilms(state.all_events, new_state)
+    new_state = { ...new_state, selected_events: new_selected_films }
     setState(new_state)
   }
 
@@ -64,12 +63,12 @@ function App() {
         COMING TO YOUTUBE MAY 29 -JUNE 7, 2020
       </div>
       <Header />
-      <Filters items={selected_items} filters={filters} toggleCheckbox={toggleCheckbox}/>
+      <Filters selected_events={selected_events} filters={filters} toggleCheckbox={toggleCheckbox}/>
 
       <Router primary={false}>
-        <Schedule path="/" items={selected_items} />
-        <EventsIndex path="/events" items={selected_items} />
-        <EventShow path="/events/:slug" items={all_items} />
+        <Schedule path="/" items={selected_events} />
+        <EventsIndex path="/events" items={selected_events} />
+        <EventShow path="/events/:slug" items={all_events} />
       </Router>
     </div>
   );

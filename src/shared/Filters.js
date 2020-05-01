@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-import xor from "lodash/xor"
-import qs from "query-string"
+import React from "react"
 import $ from "jquery"
 import { Link } from '@reach/router'
 
-function Filters({ items, filters, toggleCheckbox }) {
-
+function Filters({ selected_events, filters, toggleCheckbox }) {
   const getRemainingCount = (type, name) => {
     switch (type) {
       case "selected_kinds":
-        return items.filter(f => f.kind === name).length
+        return selected_events.filter(f => f.kind === name).length
       default:
         return 0
     }
@@ -19,7 +15,7 @@ function Filters({ items, filters, toggleCheckbox }) {
   const isActive = (type, name) => {
     switch (type) {
       case "selected_kinds":
-        return items.map(f => f.kind).includes(name)
+        return selected_events.map(f => f.kind).includes(name)
       default:
         return true
     }
@@ -121,12 +117,6 @@ function Filters({ items, filters, toggleCheckbox }) {
 
 export default Filters
 
-function getKinds(films) {
-  let films_kinds = films.map(f => f.kind).filter(k => !!k)
-  let uniq_sorted_kinds = Array.from(new Set(films_kinds)).sort()
-  return uniq_sorted_kinds.map(kind => ({ name: kind, value: kind }))
-}
-
 function toggleFilters() {
   const filters = $(".FiltersContent")
 
@@ -135,21 +125,4 @@ function toggleFilters() {
   } else {
     filters.slideUp("fast")
   }
-}
-
-function filterFilms(films, state) {
-  let remaining_films = films
-
-  // filter kind
-  if (state.selected_kinds.length) {
-    remaining_films = remaining_films.filter(film => state.selected_kinds.includes(film.kind))
-  }
-
-  return remaining_films
-}
-
-function paramsToSelected() {
-  let search = qs.parse(window.location.search, { arrayFormat: "bracket", parseNumbers: true })
-  search.selected_kinds = search.kinds || []
-  return search
 }
