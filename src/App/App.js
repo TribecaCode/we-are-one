@@ -27,6 +27,7 @@ function App() {
           all_events: res.data.events,
           all_kinds: getKinds(res.data.events),
 
+          selectedDate: '05-29',
           selected_events: selected_events,
           selected_kinds: search.selected_kinds
         })
@@ -39,7 +40,8 @@ function App() {
     all_events,
     all_kinds,
     selected_events,
-    selected_kinds
+    selected_kinds,
+    selectedDate
   } = state
 
   const filters = {
@@ -56,6 +58,14 @@ function App() {
     setState(new_state)
   }
 
+  const onDateSelect = date => e => {
+    e.preventDefault()
+    let new_state = { ...state, selectedDate: date }
+    const new_selected_events = state.all_events.filter(film => film.date && film.date === date)
+    new_state = { ...new_state, selected_events: new_selected_events }
+    setState(new_state)
+  }
+
   if (isLoading) return null
 
   return (
@@ -67,7 +77,12 @@ function App() {
       <Filters selected_events={selected_events} filters={filters} toggleCheckbox={toggleCheckbox}/>
 
       <Router primary={false}>
-        <Schedule path="/" items={selected_events} />
+        <Schedule
+          path="/"
+          items={selected_events}
+          onDateSelect={onDateSelect}
+          selectedDate={selectedDate}
+        />
         <EventsIndex path="/events" items={selected_events} />
         <EventShow path="/events/:slug" items={all_events} />
         <About path="/about" />

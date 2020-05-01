@@ -1,7 +1,20 @@
 import React from 'react'
 import Event from './Event'
 
-const Schedule = ({ items }) => {
+const DATES = [
+  '05-29',
+  '05-30',
+  '05-31',
+  '06-01',
+  '06-02',
+  '06-03',
+  '06-04',
+  '06-05',
+  '06-06',
+  '06-07',
+]
+
+const Schedule = ({ items, onDateSelect, selectedDate }) => {
   document.body.className = 'schedule'
 
   return (
@@ -17,16 +30,12 @@ const Schedule = ({ items }) => {
             </h3>
 
             <div className="ScheduleNav">
-              <a className="btn-schedule " href="/festival/schedule/29-05-2020">29</a>
-              <a className="btn-schedule " href="/festival/schedule/30-05-2020">30</a>
-              <a className="btn-schedule " href="/festival/schedule/31-05-2020">31</a>
-              <a className="btn-schedule " href="/festival/schedule/01-06-2020">01</a>
-              <a className="btn-schedule " href="/festival/schedule/02-06-2020">02</a>
-              <a className="btn-schedule " href="/festival/schedule/03-06-2020">03</a>
-              <a className="btn-schedule " href="/festival/schedule/04-06-2020">04</a>
-              <a className="btn-schedule " href="/festival/schedule/05-06-2020">05</a>
-              <a className="btn-schedule " href="/festival/schedule/06-06-2020">06</a>
-              <a className="btn-schedule " href="/festival/schedule/07-06-2020">07</a>
+              {DATES.map(d => {
+                const klass = selectedDate === d ? 'btn-schedule active' : 'btn-schedule'
+                return (
+                  <a key={d} className={klass} onClick={onDateSelect(d)}>{d.slice(3)}</a>
+                )
+              })}
             </div>
 
             <div className="row">
