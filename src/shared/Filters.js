@@ -53,22 +53,22 @@ function Filters({ selected_events, filters, toggleCheckbox }) {
     )
   }
 
-  const SearchForm = ({ klass }) => (
-    <form action="/browse" className={klass}>
-      <input name="m" type="hidden" value="film" />
-      <div className="FiltersNavSearchInputContainer">
-        <input
-          className="FiltersNavSearchInput"
-          name="q"
-          placeholder="Search the guide"
-          type="text"
-        />
-        <button className="FiltersNavSearchSubmit" type="submit">
-          <i className="fas fa-search" />
-        </button>
-      </div>
-    </form>
-  )
+  // const SearchForm = ({ klass }) => (
+  //   <form action="/browse" className={klass}>
+  //     <input name="m" type="hidden" value="film" />
+  //     <div className="FiltersNavSearchInputContainer">
+  //       <input
+  //         className="FiltersNavSearchInput"
+  //         name="q"
+  //         placeholder="Search the guide"
+  //         type="text"
+  //       />
+  //       <button className="FiltersNavSearchSubmit" type="submit">
+  //         <i className="fas fa-search" />
+  //       </button>
+  //     </div>
+  //   </form>
+  // )
 
   return (
     <div className="Filters">

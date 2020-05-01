@@ -1,9 +1,13 @@
-.films-show,
+.events-show,
 .festival-archive {
   color: $black;
 
   .Header .brand {
     max-width: 250px;
+  }
+
+  .Filters {
+    display: none;
   }
 
   .FilmHeader {

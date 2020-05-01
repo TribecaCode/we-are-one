@@ -2,6 +2,8 @@ import React from 'react'
 import Event from './Event'
 
 const EventsIndex = ({ items, filters }) => {
+  document.body.className = 'events-index'
+
   return (
     <React.Fragment>
       <div className="bg-wrapper bg-festival">

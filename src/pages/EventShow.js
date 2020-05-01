@@ -6,6 +6,8 @@ import Header from '../shared/Header'
 import youtube from '../images/youtube.png'
 
 const EventShow = ({ items, slug }) => {
+  document.body.className = 'events-show'
+
   const item = items.find(e => e.slug === slug )
 
   let img_src = item.marquee.full.url
@@ -14,8 +16,7 @@ const EventShow = ({ items, slug }) => {
   }
 
   return (
-    <div className="films-show">
-      <Header />
+    <div>
       <div className="FilmHeader">
         <div className="container FilmHeader_img-container">
           <img className="img-responsive center-block" alt={item.display_title} src={img_src} />

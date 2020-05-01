@@ -1,7 +1,9 @@
 import React from 'react'
 import Event from './Event'
 
-const Schedule = ({ items, filters }) => {
+const Schedule = ({ items }) => {
+  document.body.className = 'schedule'
+
   return (
     <div className="we_are_one-schedule">
       <div className="bg-wrapper bg-festival">
