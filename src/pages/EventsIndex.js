@@ -1,13 +1,9 @@
 import React from 'react'
 import Event from './Event'
-import Header from '../shared/Header'
-import Filters from '../shared/Filters'
 
-const EventsIndex = ({ items }) => {
+const EventsIndex = ({ items, filters }) => {
   return (
     <React.Fragment>
-      <Header />
-      <Filters />
       <div className="bg-wrapper bg-festival">
         <div className="container-fluid">
           <div className="container container--content">

@@ -5,49 +5,12 @@ import qs from "query-string"
 import $ from "jquery"
 import { Link } from '@reach/router'
 
-function Filters() {
-  const [state, setState] = useState({
-    isLoading: true
-  })
-
-  useEffect(() => {
-    async function fetchFilms() {
-      axios.get(`http://localhost:3000/festival/data`).then(res => {
-        const search = paramsToSelected()
-        const selected_films = filterFilms(res.data.films, search)
-        setState({
-          isLoading: false,
-
-          all_films: res.data.films,
-          all_kinds: getKinds(res.data.films),
-
-          selected_films: selected_films,
-          selected_kinds: search.selected_kinds,
-        })
-      })
-    }
-    fetchFilms()
-  }, [])
-
-  const {
-    isLoading,
-    all_kinds,
-    selected_films
-  } = state
-
-  const toggleCheckbox = (type, name) => e => {
-    const cur_selected_items = state[type]
-    const new_selected_items = xor(cur_selected_items, [name])
-    let new_state = { ...state, [type]: new_selected_items }
-    const new_selected_films = filterFilms(state.all_films, new_state)
-    new_state = { ...new_state, selected_films: new_selected_films }
-    setState(new_state)
-  }
+function Filters({ items, filters, toggleCheckbox }) {
 
   const getRemainingCount = (type, name) => {
     switch (type) {
       case "selected_kinds":
-        return selected_films.filter(f => f.kind === name).length
+        return items.filter(f => f.kind === name).length
       default:
         return 0
     }
@@ -56,7 +19,7 @@ function Filters() {
   const isActive = (type, name) => {
     switch (type) {
       case "selected_kinds":
-        return selected_films.map(f => f.kind).includes(name)
+        return items.map(f => f.kind).includes(name)
       default:
         return true
     }
@@ -78,7 +41,7 @@ function Filters() {
                     id={name}
                     type="checkbox"
                     onChange={toggleCheckbox(type, name)}
-                    checked={state[type].includes(name)}
+                    checked={filters.selected_kinds.includes(name)}
                     disabled={isDisabled}
                   />
                   <label htmlFor={name}>
@@ -134,7 +97,6 @@ function Filters() {
           </Link>
         </div>
       </div>
-      {!isLoading && (
         <div className="bg-pale">
           <div className="container FiltersContent">
             {/* <SearchForm klass="FiltersNavSearchXS" /> */}
@@ -145,7 +107,7 @@ function Filters() {
                   <Section
                     title="TYPE OF FILM"
                     type="selected_kinds"
-                    items={all_kinds}
+                    items={filters.all_kinds}
                     klass="col-xs-12 "
                   />
                 </div>
@@ -153,7 +115,6 @@ function Filters() {
             </div>
           </div>
         </div>
-      )}
     </div>
   )
 }

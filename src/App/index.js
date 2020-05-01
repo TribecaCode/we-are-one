@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
+import xor from "lodash/xor"
+import qs from "query-string"
 
 import { Router } from "@reach/router"
+import Header from '../shared/Header'
+import Filters from '../shared/Filters'
+
 import Schedule from '../pages/Schedule'
 import EventsIndex from '../pages/EventsIndex'
 import EventShow from '../pages/EventShow'
@@ -14,16 +19,42 @@ function App() {
   useEffect(() => {
     async function fetchFilms() {
       axios.get(`http://localhost:3000/api/we-are-one`).then(res => {
+        const search = paramsToSelected()
+        const selected_items = filterFilms(res.data.events, search)
         setState({
           isLoading: false,
-          items: res.data.events,
+          all_items: res.data.events,
+          all_kinds: getKinds(res.data.events),
+
+          selected_items: selected_items,
+          selected_kinds: search.selected_kinds
         })
       })
     }
     fetchFilms()
   }, [])
 
-  const { isLoading, items } = state
+  const { isLoading,
+    all_items,
+    all_kinds,
+    selected_items,
+    selected_kinds
+  } = state
+
+  const filters = {
+    all_kinds,
+    selected_kinds
+  }
+
+  const toggleCheckbox = (type, name) => e => {
+    console.log('toggle', type, name)
+    const cur_selected_items = state[type]
+    const new_selected_items = xor(cur_selected_items, [name])
+    let new_state = { ...state, [type]: new_selected_items }
+    const new_selected_films = filterFilms(state.all_items, new_state)
+    new_state = { ...new_state, selected_items: new_selected_films }
+    setState(new_state)
+  }
 
   if (isLoading) return null
 
@@ -32,14 +63,39 @@ function App() {
       <div className="dates-banner">
         COMING TO YOUTUBE MAY 29 -JUNE 7, 2020
       </div>
+      <Header />
+      <Filters items={selected_items} filters={filters} toggleCheckbox={toggleCheckbox}/>
 
       <Router primary={false}>
-        <Schedule path="/" items={items} />
-        <EventsIndex path="/events" items={items} />
-        <EventShow path="/events/:slug" items={items} />
+        <Schedule path="/" items={selected_items} />
+        <EventsIndex path="/events" items={selected_items} />
+        <EventShow path="/events/:slug" items={all_items} />
       </Router>
     </div>
   );
 }
 
 export default App;
+
+function filterFilms(films, state) {
+  let remaining_films = films
+
+  // filter kind
+  if (state.selected_kinds.length) {
+    remaining_films = remaining_films.filter(film => state.selected_kinds.includes(film.kind))
+  }
+
+  return remaining_films
+}
+
+function getKinds(films) {
+  let films_kinds = films.map(f => f.kind).filter(k => !!k)
+  let uniq_sorted_kinds = Array.from(new Set(films_kinds)).sort()
+  return uniq_sorted_kinds.map(kind => ({ name: kind, value: kind }))
+}
+
+function paramsToSelected() {
+  let search = qs.parse(window.location.search, { arrayFormat: "bracket", parseNumbers: true })
+  search.selected_kinds = search.kinds || []
+  return search
+}

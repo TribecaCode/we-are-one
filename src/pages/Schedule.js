@@ -1,13 +1,9 @@
 import React from 'react'
 import Event from './Event'
-import Header from '../shared/Header'
-import Filters from '../shared/Filters'
 
-const Schedule = ({ items }) => {
+const Schedule = ({ items, filters }) => {
   return (
     <div className="we_are_one-schedule">
-      <Header />
-      <Filters />
       <div className="bg-wrapper bg-festival">
         <br />
         <br/ >
