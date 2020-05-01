@@ -66,9 +66,15 @@ const EventShow = ({ items, slug }) => {
 
               </div>
               <div className="col-xs-12 col-lg-4 text-center">
-                <img className="screening-img" src={youtube} alt="link to youtube" />
-                {!!item.festival_image && (
-                  <img className="screening-img" src={item.festival_image} alt="festival logo" />
+                <br />
+                <a href={item.youtube_url}>
+                  <img className="screening-img" src={youtube} alt="link to youtube" />
+                </a>
+                <br />
+                <br />
+                <br />
+                {!!item.festival_logo_url && (
+                  <img className="screening-img" src={item.festival_logo_url} alt="festival logo" />
                 )}
               </div>
             </div>
