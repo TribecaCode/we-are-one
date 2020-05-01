@@ -98,7 +98,7 @@ function Filters({ selected_events, filters, toggleCheckbox }) {
             {/* <SearchForm klass="FiltersNavSearchXS" /> */}
 
             <div className="row FilterContentInner">
-              <div className="col-xs-12 col-lg-2 FilterContentSection">
+              <div className="col-xs-12 FilterContentSection">
                 <div className="row">
                   <Section
                     title="TYPE OF FILM"
