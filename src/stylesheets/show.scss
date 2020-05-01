@@ -1,7 +1,10 @@
 .films-show,
-.we_are_one-show,
 .festival-archive {
   color: $black;
+
+  .Header .brand {
+    max-width: 250px;
+  }
 
   .FilmHeader {
     background: $black;

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from '@reach/router'
 import Panelist from './Panelist'
 import Carousel from './Carousel'
+import Header from '../shared/Header'
 
 const EventShow = ({ items, slug }) => {
   const item = items.find(e => e.slug === slug )
@@ -13,6 +14,7 @@ const EventShow = ({ items, slug }) => {
 
   return (
     <div className="films-show">
+      <Header />
       <div className="FilmHeader">
         <div className="container FilmHeader_img-container">
           <img className="img-responsive center-block" alt={item.display_title} src={img_src} />
@@ -23,14 +25,15 @@ const EventShow = ({ items, slug }) => {
               <div className="row">
                 <div className="hidden-xs hidden-sm col-md-9">
                   <div className="PageBreadcrumbs">
-                    <Link to="/">Schedule </Link> »
-                    <Link to="/events"> Browse </Link> » {item.display_title}
+                    <Link to="/">Schedule</Link> »
+                    {" "}
+                    <Link to="/events">Browse</Link> » {item.display_title}
                   </div>
                 </div>
                 <div className="col-xs-12 col-md-3">
                   <div className="PageBreadcrumbs">
                     <Link className="pull-right" to="/">
-                      <i className="fas fa-angle-left"/>  Schedule
+                      <i className="fas fa-angle-left"/>  Home
                     </Link>
                   </div>
                 </div>

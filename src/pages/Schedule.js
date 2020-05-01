@@ -1,9 +1,11 @@
 import React from 'react'
 import Event from './Event'
+import Header from '../shared/Header'
 
-const Home = ({ items }) => {
+const Schedule = ({ items }) => {
   return (
     <div className="we_are_one-schedule">
+      <Header />
       <div className="bg-wrapper bg-festival">
         <br />
         <br/ >
@@ -42,4 +44,4 @@ const Home = ({ items }) => {
   )
 }
 
-export default Home
+export default Schedule

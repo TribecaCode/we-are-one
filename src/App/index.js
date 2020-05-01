@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
 import { Router } from "@reach/router"
-import Home from '../pages/Home'
+import Schedule from '../pages/Schedule'
 import EventsIndex from '../pages/EventsIndex'
 import EventShow from '../pages/EventShow'
 
@@ -28,11 +28,17 @@ function App() {
   if (isLoading) return null
 
   return (
-      <Router>
-        <Home path="/" items={items}/>
-        <EventsIndex path="/events" items={items}/>
+    <div className="App">
+      <div className="dates-banner">
+        COMING TO YOUTUBE MAY 29 -JUNE 7, 2020
+      </div>
+
+      <Router primary={false}>
+        <Schedule path="/" items={items} />
+        <EventsIndex path="/events" items={items} />
         <EventShow path="/events/:slug" items={items} />
       </Router>
+    </div>
   );
 }
 
