@@ -1,4 +1,8 @@
-.we_are_one-schedule {
+.schedule {
+  #schedule {
+    opacity: 0.58
+  }
+
   .ScheduleTime {
     @include fluid-type(16px, 30px);
     font-family: Hind;

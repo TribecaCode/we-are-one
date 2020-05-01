@@ -82,13 +82,13 @@ function Filters({ selected_events, filters, toggleCheckbox }) {
         </div>
         <div className="spacer"></div>
         <div className="FiltersNavRight ">
-          <Link className="FiltersNavLink FiltersNavLink" to="/">
+          <Link className="FiltersNavLink" to="/" id="schedule">
             SCHEDULE
           </Link>
-          <Link className="FiltersNavLink" to="/events">
+          <Link className="FiltersNavLink" to="/events" id="browse">
             BROWSE
           </Link>
-          <Link className="FiltersNavLink" to="/festival/discover">
+          <Link className="FiltersNavLink" to="/about" id="about">
             ABOUT
           </Link>
         </div>

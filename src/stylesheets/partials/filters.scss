@@ -1,6 +1,13 @@
+.events-index {
+  #browse {
+    opacity: 0.58
+  }
+}
+
 .Filters {
   color: $black;
   background: $white;
+
 
   .FiltersNav {
     display: flex;
@@ -99,7 +106,7 @@
   }
 
   .FiltersContent {
-    // display: none;
+    display: none;
 
     .FilterContentSection {
       .FilterContentSectionTitle {
