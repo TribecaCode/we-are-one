@@ -8,6 +8,14 @@
     font-family: Hind;
     font-weight: 700;
     color: $black;
+    display: flex;
+
+    .may {
+      flex-grow: 1;
+    }
+    .june {
+      flex-grow: 2;
+    }
   }
 
   .ScheduleTime--spaced {

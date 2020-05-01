@@ -3,11 +3,6 @@ import Event from './Event'
 
 const Schedule = ({ items }) => {
   document.body.className = 'schedule'
-  // const classes = ["schedule", "browse", "about"]
-  // classes.forEach(elId => {
-  //   document.getElementById(elId).classList.remove('active')
-  // })
-  // document.getElementById('schedule').classList.add('active')
 
   return (
     <div className="we_are_one-schedule">
@@ -16,7 +11,10 @@ const Schedule = ({ items }) => {
         <br/ >
         <div className="container-fluid bg-pale">
           <div className="container container--content">
-            <h3 className="ScheduleTime">May</h3>
+            <h3 className="ScheduleTime">
+              <span className="may">May</span>
+              <span className="june">June</span>
+            </h3>
 
             <div className="ScheduleNav">
               <a className="btn-schedule " href="/festival/schedule/29-05-2020">29</a>
