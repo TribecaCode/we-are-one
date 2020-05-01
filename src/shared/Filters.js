@@ -3,6 +3,7 @@ import axios from "axios"
 import xor from "lodash/xor"
 import qs from "query-string"
 import $ from "jquery"
+import { Link } from '@reach/router'
 
 export const FILM_CATEGORIES = [
   { name: "film", value: "Film" },
@@ -202,15 +203,15 @@ function Filters() {
         </div>
         <div className="spacer"></div>
         <div className="FiltersNavRight ">
-          <a className="FiltersNavLink FiltersNavLink active" href="#browsing">
-            BROWSE
-          </a>
-          <a className="FiltersNavLink" href="/festival/schedule">
+          <Link className="FiltersNavLink FiltersNavLink active" to="#schedule">
             SCHEDULE
-          </a>
-          <a className="FiltersNavLink" href="/festival/discover">
-            DISCOVER
-          </a>
+          </Link>
+          <Link className="FiltersNavLink" to="/events">
+            BROWSE
+          </Link>
+          <Link className="FiltersNavLink" to="/festival/discover">
+            ABOUT
+          </Link>
         </div>
       </div>
       {!isLoading && (
