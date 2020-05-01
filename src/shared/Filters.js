@@ -22,7 +22,6 @@ function Filters() {
           all_kinds: getKinds(res.data.films),
 
           selected_films: selected_films,
-          selected_categories: search.selected_categories,
           selected_kinds: search.selected_kinds,
         })
       })
@@ -42,21 +41,18 @@ function Filters() {
       ...state,
       selected_films: state.all_films,
       selected_kinds: [],
-      selected_categories: [],
     }
     setState(new_state)
   }
 
   const canSearch = () => {
     if (state.selected_kinds.length) return true
-    if (state.selected_categories.length) return true
   }
 
   const search = e => {
     e.preventDefault()
 
     const params = {
-      categories: state["selected_categories"],
       kinds: state["selected_kinds"],
     }
     const search = qs.stringify(params, { arrayFormat: "bracket" })
@@ -74,8 +70,6 @@ function Filters() {
 
   const getRemainingCount = (type, name) => {
     switch (type) {
-      case "selected_categories":
-        return selected_films.filter(f => f.category === name).length
       case "selected_kinds":
         return selected_films.filter(f => f.kind === name).length
       default:
@@ -85,8 +79,6 @@ function Filters() {
 
   const isActive = (type, name) => {
     switch (type) {
-      case "selected_categories":
-        return selected_films.map(f => f.category).includes(name)
       case "selected_kinds":
         return selected_films.map(f => f.kind).includes(name)
       default:
@@ -221,12 +213,6 @@ function toggleFilters() {
 
 function filterFilms(films, state) {
   let remaining_films = films
-  // filter categories
-  if (state.selected_categories.length) {
-    remaining_films = remaining_films.filter(film =>
-      state.selected_categories.includes(film.category)
-    )
-  }
 
   // filter kind
   if (state.selected_kinds.length) {
@@ -238,7 +224,6 @@ function filterFilms(films, state) {
 
 function paramsToSelected() {
   let search = qs.parse(window.location.search, { arrayFormat: "bracket", parseNumbers: true })
-  search.selected_categories = search.categories || []
   search.selected_kinds = search.kinds || []
   return search
 }
