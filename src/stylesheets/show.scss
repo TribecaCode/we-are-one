@@ -119,76 +119,10 @@
     font-weight: 500;
   }
 
-  .Screenings {
-    margin-bottom: 20px;
-
-    .Screening {
-      border-top: 4px solid $brownish-orange;
-      position: relative;
-      color: white;
-      margin-bottom: 20px;
-      background: $dark-grey;
-      padding: 20px;
-      align-items: center;
-
-      .ScreeningContent {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .ScreeningDate {
-        font-family: Hind;
-        font-weight: 500;
-        @include fluid-type(18px, 21px);
-      }
-      .ScreeningVenue {
-        cursor: pointer;
-        text-decoration: none;
-        color: $white;
-        font-family: Hind;
-        font-weight: 400;
-        @include fluid-type(16px, 18px);
-      }
-      .ScreeningKind {
-        font-family: Hind;
-        font-weight: 400;
-        @include fluid-type(14px, 16px);
-      }
-      .fas {
-        min-width: 25px;
-      }
-      .ScreeningBuy {
-        color: $white;
-        font: 12px/20px Hind;
-        font-weight: 400;
-
-        a {
-          color: $white;
-          text-transform: uppercase;
-        }
-      }
-
-      .ScreeningNote {
-        font-family: Hind;
-        font-weight: 400;
-        font-size: 12px;
-      }
-    }
-
-    .Screening--rush {
-      border-top: 4px solid #d8d8d8;
-      &:before {
-        content: "RUSH";
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 0px 14px 4px;
-        background: #d8d8d8;
-        color: $black;
-        font: 14px/18px Montserrat;
-        font-weight: 600;
-      }
-    }
+  .screening-img {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
   }
 
   .rush-note {

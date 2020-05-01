@@ -3,6 +3,7 @@ import { Link } from '@reach/router'
 import Panelist from './Panelist'
 import Carousel from './Carousel'
 import Header from '../shared/Header'
+import youtube from '../images/youtube.png'
 
 const EventShow = ({ items, slug }) => {
   const item = items.find(e => e.slug === slug )
@@ -50,7 +51,6 @@ const EventShow = ({ items, slug }) => {
       </div>
 
       <div className="bg-wrapper bg-festival">
-
         <div className="container-fluid bg-white film-container film-container--ruby">
           <div className="container container--content">
             <div className="row">
@@ -65,7 +65,12 @@ const EventShow = ({ items, slug }) => {
                 {!!item.images.length && <Carousel title={item.display_title} images={item.images} /> }
 
               </div>
-              <div className="col-xs-12 col-lg-4 Screenings"></div>
+              <div className="col-xs-12 col-lg-4 text-center">
+                <img className="screening-img" src={youtube} alt="link to youtube" />
+                {!!item.festival_image && (
+                  <img className="screening-img" src={item.festival_image} alt="festival logo" />
+                )}
+              </div>
             </div>
 
             <div className="row">
