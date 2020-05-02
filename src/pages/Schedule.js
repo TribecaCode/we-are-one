@@ -17,6 +17,11 @@ const DATES = [
 const Schedule = ({ items, onDateSelect, selectedDate }) => {
   document.body.className = 'schedule'
 
+  const morning = items.filter(film => film.time_of_day === "morning")
+  const day = items.filter(film => film.time_of_day === "day")
+  const eventing = items.filter(film => film.time_of_day === "evening")
+  const night = items.filter(film => film.time_of_day === "night")
+
   return (
     <div className="we_are_one-schedule">
       <div className="bg-wrapper bg-festival">
@@ -43,11 +48,13 @@ const Schedule = ({ items, onDateSelect, selectedDate }) => {
                 <h3 className="ScheduleTime">Fri May 29</h3>
               </div>
 
-              <div className="col-xs-12">
-                <hr className="devider" />
-                <h3 className="ScheduleTime ScheduleTime--spaced">Morning 9am - 12pm</h3>
-                {items.map(item => <Event key={item.id} item={item}/>)}
-              </div>
+              {!!morning.length && (
+                <div className="col-xs-12">
+                  <hr className="devider" />
+                  <h3 className="ScheduleTime ScheduleTime--spaced">Morning 9am - 12pm</h3>
+                  {items.map(item => <Event key={item.id} item={item}/>)}
+                </div>
+              )}
             </div>
           </div>
         </div>
