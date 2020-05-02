@@ -2,7 +2,7 @@ import React from "react"
 import $ from "jquery"
 import { Link } from '@reach/router'
 
-function Filters({ selected_events, filters, toggleCheckbox }) {
+function Filters({ selected_events, filters, toggleCheckbox, onBrowseClick, onScheduleClick }) {
   const getRemainingCount = (type, name) => {
     switch (type) {
       case "selected_kinds":
@@ -74,7 +74,7 @@ function Filters({ selected_events, filters, toggleCheckbox }) {
     <div className="Filters">
       <div className="container FiltersNav ">
         <div className="FiltersNavLeft ">
-          <a className="FiltersNavLink" a="#filters" onClick={toggleFilters}>
+          <a className="FiltersNavLink" href="#filters" onClick={toggleFilters}>
             <i className="fas fa-chevron-down" />
             <span> FILTER EVENTS</span>
           </a>
@@ -82,10 +82,10 @@ function Filters({ selected_events, filters, toggleCheckbox }) {
         </div>
         <div className="spacer"></div>
         <div className="FiltersNavRight ">
-          <Link className="FiltersNavLink" to="/" id="schedule">
+          <Link className="FiltersNavLink" to="/" id="schedule" onClick={onScheduleClick}>
             SCHEDULE
           </Link>
-          <Link className="FiltersNavLink" to="/events" id="browse">
+          <Link className="FiltersNavLink" to="/events" id="browse" onClick={onBrowseClick}>
             BROWSE
           </Link>
           <Link className="FiltersNavLink" to="/about" id="about">

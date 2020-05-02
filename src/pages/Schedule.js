@@ -33,7 +33,7 @@ const Schedule = ({ items, onDateSelect, selectedDate }) => {
               {DATES.map(d => {
                 const klass = selectedDate === d ? 'btn-schedule active' : 'btn-schedule'
                 return (
-                  <a key={d} className={klass} onClick={onDateSelect(d)}>{d.slice(3)}</a>
+                  <a key={d} className={klass} onClick={onDateSelect(d)} href={`#{d}`}>{d.slice(3)}</a>
                 )
               })}
             </div>

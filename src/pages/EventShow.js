@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from '@reach/router'
 import Panelist from './Panelist'
 import Carousel from './Carousel'
-import Header from '../shared/Header'
 import youtube from '../images/youtube.png'
 
 const EventShow = ({ items, slug }) => {

@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     async function fetchFilms() {
       axios.get(`http://localhost:3000/api/we-are-one`).then(res => {
-        const search = paramsToSelected()
+        const search = { selected_kinds: [], selectedDate: '05-29' }
         const selected_events = filterFilms(res.data.events, search)
         setState({
           isLoading: false,
@@ -61,8 +61,24 @@ function App() {
   const onDateSelect = date => e => {
     e.preventDefault()
     let new_state = { ...state, selectedDate: date }
-    const new_selected_events = state.all_events.filter(film => film.date && film.date === date)
+    const new_selected_events = filterFilms(state.all_events, new_state)
     new_state = { ...new_state, selected_events: new_selected_events }
+    setState(new_state)
+  }
+
+  const onBrowseClick = e => {
+    console.log('clearing date')
+    let new_state = { ...state, selectedDate: null }
+    const new_selected_films = filterFilms(state.all_events, new_state)
+    new_state = { ...new_state, selected_events: new_selected_films }
+    setState(new_state)
+  }
+
+  const onScheduleClick = e => {
+    console.log('setting date')
+    let new_state = { ...state, selectedDate: '05-29' }
+    const new_selected_films = filterFilms(state.all_events, new_state)
+    new_state = { ...new_state, selected_events: new_selected_films }
     setState(new_state)
   }
 
@@ -74,7 +90,13 @@ function App() {
         COMING TO YOUTUBE MAY 29 -JUNE 7, 2020
       </div>
       <Header />
-      <Filters selected_events={selected_events} filters={filters} toggleCheckbox={toggleCheckbox}/>
+      <Filters
+        selected_events={selected_events}
+        filters={filters}
+        toggleCheckbox={toggleCheckbox}
+        onBrowseClick={onBrowseClick}
+        onScheduleClick={onScheduleClick}
+      />
 
       <Router primary={false}>
         <Schedule
@@ -101,6 +123,11 @@ function filterFilms(films, state) {
     remaining_films = remaining_films.filter(film => state.selected_kinds.includes(film.kind))
   }
 
+  // filter by date
+  if (state.selectedDate) {
+    remaining_films = remaining_films.filter(film => film.date && film.date === state.selectedDate)
+  }
+
   return remaining_films
 }
 
@@ -108,10 +135,4 @@ function getKinds(films) {
   let films_kinds = films.map(f => f.kind).filter(k => !!k)
   let uniq_sorted_kinds = Array.from(new Set(films_kinds)).sort()
   return uniq_sorted_kinds.map(kind => ({ name: kind, value: kind }))
-}
-
-function paramsToSelected() {
-  let search = qs.parse(window.location.search, { arrayFormat: "bracket", parseNumbers: true })
-  search.selected_kinds = search.kinds || []
-  return search
 }
