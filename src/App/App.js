@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     async function fetchFilms() {
-      axios.get(`http://localhost:3000/api/we-are-one`).then(res => {
+      axios.get(`https://tribecafilm.com/api/we-are-one`).then(res => {
         const search = { selected_kinds: [], selectedDate: '05-29' }
         const selected_events = filterFilms(res.data.events, search)
         setState({
