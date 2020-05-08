@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import xor from "lodash/xor"
-import qs from "query-string"
 
 import { Router } from "@reach/router"
-import Header from '../shared/Header'
 import Filters from '../shared/Filters'
 
 import Schedule from '../pages/Schedule'
@@ -84,19 +82,19 @@ function App() {
 
   if (isLoading) return null
 
+  const filterComp = <Filters
+                    selected_events={selected_events}
+                    filters={filters}
+                    toggleCheckbox={toggleCheckbox}
+                    onBrowseClick={onBrowseClick}
+                    onScheduleClick={onScheduleClick}
+                  />
+
   return (
     <div className="App">
       <div className="dates-banner">
         COMING TO YOUTUBE MAY 29 -JUNE 7, 2020
       </div>
-      <Header />
-      <Filters
-        selected_events={selected_events}
-        filters={filters}
-        toggleCheckbox={toggleCheckbox}
-        onBrowseClick={onBrowseClick}
-        onScheduleClick={onScheduleClick}
-      />
 
       <Router primary={false}>
         <Schedule
@@ -104,10 +102,11 @@ function App() {
           items={selected_events}
           onDateSelect={onDateSelect}
           selectedDate={selectedDate}
+          filter={filterComp}
         />
-        <EventsIndex path="/events" items={selected_events} />
+        <EventsIndex path="/events" items={selected_events} filter={filterComp} />
+        <About path="/about" filter={filterComp}/>
         <EventShow path="/events/:slug" items={all_events} />
-        <About path="/about" />
       </Router>
     </div>
   );

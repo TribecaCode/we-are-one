@@ -3,6 +3,7 @@ import { Link } from '@reach/router'
 import Panelist from './Panelist'
 import Carousel from './Carousel'
 import youtube from '../images/youtube.png'
+import header from '../images/we-are-one-white.png'
 
 const EventShow = ({ items, slug }) => {
   document.body.className = 'events-show'
@@ -16,6 +17,9 @@ const EventShow = ({ items, slug }) => {
 
   return (
     <div>
+      <header className="Header">
+        <img className="brand" src={header} alt="We Are One Festival White logo" />
+      </header>
       <div className="FilmHeader">
         <div className="container FilmHeader_img-container">
           <img className="img-responsive center-block" alt={item.display_title} src={img_src} />

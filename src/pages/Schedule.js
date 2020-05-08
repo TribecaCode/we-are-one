@@ -1,5 +1,6 @@
 import React from 'react'
 import Event from './Event'
+import Header from '../shared/Header'
 
 const DATES = [
   '05-29',
@@ -14,52 +15,56 @@ const DATES = [
   '06-07',
 ]
 
-const Schedule = ({ items, onDateSelect, selectedDate }) => {
+const Schedule = ({ items, onDateSelect, selectedDate, filter }) => {
   document.body.className = 'schedule'
 
   const morning = items.filter(film => film.time_of_day === "morning")
-  const day = items.filter(film => film.time_of_day === "day")
-  const eventing = items.filter(film => film.time_of_day === "evening")
-  const night = items.filter(film => film.time_of_day === "night")
+  // const day = items.filter(film => film.time_of_day === "day")
+  // const eventing = items.filter(film => film.time_of_day === "evening")
+  // const night = items.filter(film => film.time_of_day === "night")
 
   return (
-    <div className="we_are_one-schedule">
-      <div className="bg-wrapper bg-festival">
-        <br />
-        <br/ >
-        <div className="container-fluid bg-pale">
-          <div className="container container--content">
-            <h3 className="ScheduleTime">
-              <span className="may">May</span>
-              <span className="june">June</span>
-            </h3>
+    <React.Fragment>
+      <Header />
+      {filter}
+      <div className="we_are_one-schedule">
+        <div className="bg-wrapper bg-festival">
+          <br />
+          <br/ >
+          <div className="container-fluid bg-pale">
+            <div className="container container--content">
+              <h3 className="ScheduleTime">
+                <span className="may">May</span>
+                <span className="june">June</span>
+              </h3>
 
-            <div className="ScheduleNav">
-              {DATES.map(d => {
-                const klass = selectedDate === d ? 'btn-schedule active' : 'btn-schedule'
-                return (
-                  <a key={d} className={klass} onClick={onDateSelect(d)} href={`#{d}`}>{d.slice(3)}</a>
-                )
-              })}
-            </div>
-
-            <div className="row">
-              <div className="col-xs-12">
-                <h3 className="ScheduleTime">Fri May 29</h3>
+              <div className="ScheduleNav">
+                {DATES.map(d => {
+                  const klass = selectedDate === d ? 'btn-schedule active' : 'btn-schedule'
+                  return (
+                    <a key={d} className={klass} onClick={onDateSelect(d)} href={`#{d}`}>{d.slice(3)}</a>
+                  )
+                })}
               </div>
 
-              {!!morning.length && (
+              <div className="row">
                 <div className="col-xs-12">
-                  <hr className="devider" />
-                  <h3 className="ScheduleTime ScheduleTime--spaced">Morning 9am - 12pm</h3>
-                  {items.map(item => <Event key={item.id} item={item}/>)}
+                  <h3 className="ScheduleTime">Fri May 29</h3>
                 </div>
-              )}
+
+                {!!morning.length && (
+                  <div className="col-xs-12">
+                    <hr className="devider" />
+                    <h3 className="ScheduleTime ScheduleTime--spaced">Morning 9am - 12pm</h3>
+                    {items.map(item => <Event key={item.id} item={item}/>)}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   )
 }
 
