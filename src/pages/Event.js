@@ -33,9 +33,9 @@ const Event = ({ item }) => {
               <div className="Film_genre">{item.kind}</div>
               <h4 className="heading-4">
                 <Link className="Film_title" to={`/events/${item.slug}`}>{item.display_title}</Link>
-                <div className="Card_subtitle">date {item.date}</div>
-                <div className="Card_subtitle">time {item.time}</div>
-                <div className="Card_subtitle">time of day {item.time_of_day}</div>
+                {/* <div className="Card_subtitle">date {item.date}</div> */}
+                {/* <div className="Card_subtitle">time {item.time}</div> */}
+                {/* <div className="Card_subtitle">time of day {item.time_of_day}</div> */}
               </h4>
               <div className="Film_summary">{item.short_summary}</div>
             </div>
