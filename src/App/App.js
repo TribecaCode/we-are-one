@@ -19,17 +19,19 @@ function App() {
   useEffect(() => {
     async function fetchFilms() {
       axios.get(`${process.env.REACT_APP_API_URL}/api/we-are-one`).then(res => {
-        const search = { selected_kinds: [], selectedDate: '05-29' }
+        const search = { selected_kinds: [], selected_genres: [], selectedDate: '05-29' }
         const selected_events = filterFilms(res.data.events, search)
         setState({
           isLoading: false,
           all_events: res.data.events,
           about: res.data.about,
           all_kinds: getKinds(res.data.events),
+          all_genres: getGenres(res.data.events),
 
           selectedDate: '05-29',
           selected_events: selected_events,
-          selected_kinds: search.selected_kinds
+          selected_kinds: search.selected_kinds,
+          selected_genres: search.selected_genres
         })
       })
     }
@@ -39,15 +41,19 @@ function App() {
   const { isLoading,
     all_events,
     all_kinds,
+    all_genres,
     selected_events,
     selected_kinds,
+    selected_genres,
     selectedDate,
     about
   } = state
 
   const filters = {
     all_kinds,
-    selected_kinds
+    all_genres,
+    selected_kinds,
+    selected_genres
   }
 
   const toggleCheckbox = (type, name) => e => {
@@ -131,6 +137,13 @@ function filterFilms(films, state) {
     remaining_films = remaining_films.filter(film => film.date && film.date === state.selectedDate)
   }
 
+  // filter genres
+  if (state.selected_genres.length) {
+    remaining_films = remaining_films.filter(film =>
+      state.selected_genres.every(genre => film.genres.includes(genre))
+    )
+  }
+
   return remaining_films
 }
 
@@ -138,4 +151,10 @@ function getKinds(films) {
   let films_kinds = films.map(f => f.kind).filter(k => !!k)
   let uniq_sorted_kinds = Array.from(new Set(films_kinds)).sort()
   return uniq_sorted_kinds.map(kind => ({ name: kind, value: kind }))
+}
+
+function getGenres(films) {
+  let films_genres = films.map(f => f.genres).flat()
+  let uniq_sorted_genres = Array.from(new Set(films_genres)).sort()
+  return uniq_sorted_genres.map(genre => ({ name: genre, value: genre }))
 }

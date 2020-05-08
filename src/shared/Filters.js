@@ -7,6 +7,8 @@ function Filters({ selected_events, filters, toggleCheckbox, onBrowseClick, onSc
     switch (type) {
       case "selected_kinds":
         return selected_events.filter(f => f.kind === name).length
+      case "selected_genres":
+        return selected_events.filter(f => f.genres.includes(name)).length
       default:
         return 0
     }
@@ -16,6 +18,11 @@ function Filters({ selected_events, filters, toggleCheckbox, onBrowseClick, onSc
     switch (type) {
       case "selected_kinds":
         return selected_events.map(f => f.kind).includes(name)
+      case "selected_genres":
+        return selected_events
+          .map(f => f.genres)
+          .flat()
+          .includes(name)
       default:
         return true
     }
@@ -104,6 +111,19 @@ function Filters({ selected_events, filters, toggleCheckbox, onBrowseClick, onSc
                     title="TYPE OF FILM"
                     type="selected_kinds"
                     items={filters.all_kinds}
+                    klass="col-xs-12 "
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="row FilterContentInner">
+              <div className="col-xs-12 FilterContentSection">
+                <div className="row">
+                  <Section
+                    title="GENRE"
+                    type="selected_genres"
+                    items={filters.all_genres}
                     klass="col-xs-12 "
                   />
                 </div>
