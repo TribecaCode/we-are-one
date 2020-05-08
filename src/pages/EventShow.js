@@ -72,22 +72,28 @@ const EventShow = ({ items, slug }) => {
                   {!!item.run_time && <span> {item.run_time} min</span>}
                 </div>
                 <h1 className="heading-1 FilmTitle">{item.display_title}</h1>
-                  {!!item.genres && item.genres.length && (
+                  {!!item.genres && !!item.genres.length && (
                     <div className="FilmGenres">
                       <span>{item.genres.join(', ')}</span>
                     </div>
                   )}
+                <br />
+                <br />
                 <div className="FilmSynopsis" dangerouslySetInnerHTML={{__html: item.synopsis}} />
                 {!!item.images.length && <Carousel title={item.display_title} images={item.images} /> }
 
               </div>
-              <div className="col-xs-12 col-lg-4 text-center">
+              <div className="col-xs-12 col-lg-3 col-lg-offset-1">
+                <br />
+                <div className="hind-text">Watch Now, exlusively on</div>
                 <br />
                 <a href={item.youtube_url}>
                   <img className="screening-img" src={youtube} alt="link to youtube" />
                 </a>
                 <br />
                 <br />
+                <br />
+                <div className="hind-text">Curated by</div>
                 <br />
                 {!!item.festival_logo_url && (
                   <img className="screening-img" src={item.festival_logo_url} alt="festival logo" />
@@ -97,7 +103,7 @@ const EventShow = ({ items, slug }) => {
 
             <div className="row">
               <div className="col-xs-12 col-lg-8">
-                {!!item.cast_credits && item.cast_credits.length && (
+                {!!item.cast_credits && !!item.cast_credits.length && (
                   <div>
                     <hr className="divider" />
                     <h2 className="FilmSectionTitle">CAST &amp; CREDITS</h2>
