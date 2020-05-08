@@ -1,6 +1,7 @@
 import React from 'react'
 import Event from './Event'
 import Header from '../shared/Header'
+import MyMetaTags from '../shared/MyMetaTags'
 
 const DATES = [
   '05-29',
@@ -25,6 +26,8 @@ const Schedule = ({ items, onDateSelect, selectedDate, filter }) => {
 
   return (
     <React.Fragment>
+      <MyMetaTags title="Festival Schedule" description="We Are One: A Global Film Festival will run from May 29 - June 7 on YouTube.com/WeAreOne. A free 10-day digital festival to benefit World Health Organization Covid-19 Solidarity Response Fund that will include films, shorts, documentaries, music, comedy, and conversations. Below is the full schedule of events"
+      />
       <Header />
       {filter}
       <div className="we_are_one-schedule">

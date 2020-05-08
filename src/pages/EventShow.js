@@ -4,6 +4,7 @@ import Panelist from './Panelist'
 import Carousel from './Carousel'
 import youtube from '../images/youtube.png'
 import header from '../images/we-are-one-white.png'
+import MyMetaTags from '../shared/MyMetaTags'
 
 const EventShow = ({ items, slug }) => {
   document.body.className = 'events-show'
@@ -17,6 +18,7 @@ const EventShow = ({ items, slug }) => {
 
   return (
     <div>
+      <MyMetaTags title={item.display_title} description={item.short_summary} />
       <header className="Header">
         <img className="brand" src={header} alt="We Are One Festival White logo" />
       </header>
@@ -65,7 +67,7 @@ const EventShow = ({ items, slug }) => {
                   {!!item.run_time && <span> {item.run_time} min</span>}
                 </div>
                 <h1 className="heading-1 FilmTitle">{item.display_title}</h1>
-                  {item.genres.length && (
+                  {!!item.genres && item.genres.length && (
                     <div className="FilmGenres">
                       <span>{item.genres.join(', ')}</span>
                     </div>
@@ -90,7 +92,7 @@ const EventShow = ({ items, slug }) => {
 
             <div className="row">
               <div className="col-xs-12 col-lg-8">
-                {!!item.cast_credits.length && (
+                {!!item.cast_credits && item.cast_credits.length && (
                   <div>
                     <hr className="divider" />
                     <h2 className="FilmSectionTitle">CAST &amp; CREDITS</h2>

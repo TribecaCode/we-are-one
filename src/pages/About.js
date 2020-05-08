@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../shared/Header'
+import MyMetaTags from '../shared/MyMetaTags'
 
 const About = ({filter}) => {
   document.body.className = 'about'
@@ -7,6 +8,7 @@ const About = ({filter}) => {
   return (
     <React.Fragment>
       <Header />
+      <MyMetaTags title='About' description="TODO" />
       {filter}
       <div className="bg-wrapper bg-festival">
         <br />
