@@ -28,7 +28,7 @@ const Event = ({ item }) => {
             <div>
               <div className="pull-right">
                 <div className="Film_curated">Curated by {item.festival_name}</div>
-                <div className="Film_runtime">{item.run_time} min</div>
+                <div className="Film_runtime pull-right">{item.run_time} min</div>
               </div>
               <div className="Film_genre">{item.kind}</div>
               <h4 className="heading-4">
