@@ -23,6 +23,7 @@ function App() {
         setState({
           isLoading: false,
           all_events: res.data.events,
+          about: res.data.about,
           all_kinds: getKinds(res.data.events),
 
           selectedDate: '05-29',
@@ -39,7 +40,8 @@ function App() {
     all_kinds,
     selected_events,
     selected_kinds,
-    selectedDate
+    selectedDate,
+    about
   } = state
 
   const filters = {
@@ -105,7 +107,7 @@ function App() {
           filter={filterComp}
         />
         <EventsIndex path="/events" items={selected_events} filter={filterComp} />
-        <About path="/about" filter={filterComp}/>
+        <About path="/about" filter={filterComp} data={about}/>
         <EventShow path="/events/:slug" items={all_events} />
       </Router>
     </div>

@@ -2,13 +2,13 @@ import React from 'react'
 import Header from '../shared/Header'
 import MyMetaTags from '../shared/MyMetaTags'
 
-const About = ({filter}) => {
+const About = ({filter, data}) => {
   document.body.className = 'about'
 
   return (
     <React.Fragment>
       <Header />
-      <MyMetaTags title='About' description="TODO" />
+      <MyMetaTags title={data.title} description={data.short_summary} css={data.css} />
       {filter}
       <div className="bg-wrapper bg-festival">
         <br />
@@ -16,7 +16,7 @@ const About = ({filter}) => {
         <div className="container-fluid bg-white news-border-top">
           <div className="container container--content">
             <div className="row">
-              <h1> ABOUT PSGE HERE</h1>
+              <div dangerouslySetInnerHTML={{__html: data.body}} />
             </div>
           </div>
         </div>
