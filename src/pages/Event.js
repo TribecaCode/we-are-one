@@ -15,7 +15,7 @@ const Event = ({ item }) => {
             <div className="Card_img Card_img--ruby" style={{backgroundImage: `url(${img_src})`}}></div>
           </Link>
           <div className="Card_text-container">
-            <div className="Card_subtitle"></div>
+            <div className="Card_subtitle">{item.kind}</div>
             <Link className="Card_title" to={`/events/${item.slug}`} title="Pretty People" item={item}>{item.display_title}</Link>
           </div>
         </div>
@@ -27,9 +27,10 @@ const Event = ({ item }) => {
           <div className="Film_content">
             <div>
               <div className="pull-right">
-                <div className="Film_runtime pull-right">{item.run_time} min</div>
+                <div className="Film_curated">Curated by {item.festival_name}</div>
+                <div className="Film_runtime">{item.run_time} min</div>
               </div>
-              <div className="Film_genre">{item.type_of_event}</div>
+              <div className="Film_genre">{item.kind}</div>
               <h4 className="heading-4">
                 <Link className="Film_title" to={`/events/${item.slug}`}>{item.display_title}</Link>
                 <div className="Card_subtitle">date {item.date}</div>
