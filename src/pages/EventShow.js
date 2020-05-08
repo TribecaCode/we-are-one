@@ -65,6 +65,11 @@ const EventShow = ({ items, slug }) => {
                   {!!item.run_time && <span> {item.run_time} min</span>}
                 </div>
                 <h1 className="heading-1 FilmTitle">{item.display_title}</h1>
+                  {item.genres.length && (
+                    <div className="FilmGenres">
+                      <span>{item.genres.join(', ')}</span>
+                    </div>
+                  )}
                 <div className="FilmSynopsis" dangerouslySetInnerHTML={{__html: item.synopsis}} />
                 {!!item.images.length && <Carousel title={item.display_title} images={item.images} /> }
 
