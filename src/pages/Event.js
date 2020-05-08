@@ -23,7 +23,7 @@ const Event = ({ item }) => {
 
       <div className="hidden-xs col-sm-12">
         <div className="Film">
-          <Link className="Film_img-container Film_img-container--ruby" style={{backgroundImage: `url(${img_src})`}} to={`/events/${item.slug}`} item={item}/>
+          <Link className={`Film_img-container Film_img-container--${item.color}`} style={{backgroundImage: `url(${img_src})`}} to={`/events/${item.slug}`} item={item}/>
           <div className="Film_content">
             <div>
               <div className="pull-right">

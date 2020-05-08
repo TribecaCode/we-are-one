@@ -1,8 +1,10 @@
+
+
+
 // colors
 $ruby: #d1004c;
 $sienna: #b55420;
 $indigo: #5f009e;
-$blue: #0a37ba;
 $jungle-green: #006f4e;
 $black: #000;
 $grey: #d8d8d8;
@@ -11,11 +13,16 @@ $blue-grey: #344154;
 $light-grey: #f7f9fb;
 $dark-grey: #242626;
 $grey: #7e7e7e;
-$gold: #d48f27;
 $pale-grey: #f7f9fb;
 $charcoal: rgba(36, 38, 38, 0.85);
 $brownish-orange: #d48f27;
 $brown-grey: #979797;
+
+// we are one
+$red: #fc4949;
+$green: #53e578;
+$blue: #06BDEF;
+$gold: #EBB010;
 
 // colors used to generate links, butons and borders for various types of films
 $colors: (
@@ -24,7 +31,10 @@ $colors: (
   jungle-green: $jungle-green,
   indigo: $indigo,
   ruby: $ruby,
-  sienna: $sienna
+  sienna: $sienna,
+  red: $red,
+  green : $green,
+  gold: $gold
 );
 
 // bootstrap breakpoints

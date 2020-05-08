@@ -62,7 +62,7 @@ const EventShow = ({ items, slug }) => {
       </div>
 
       <div className="bg-wrapper bg-festival">
-        <div className="container-fluid bg-white film-container film-container--ruby">
+        <div className={`container-fluid bg-white film-container film-container--${item.color}`}>
           <div className="container container--content">
             <div className="row">
               <div className="col-xs-12 col-lg-8">
