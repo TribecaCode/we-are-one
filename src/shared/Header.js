@@ -1,5 +1,5 @@
 import React from 'react'
-import header from '../images/we-are-one-white.png'
+import header from '../images/header.png'
 
 const Header = () => (
   <header className="Header">
