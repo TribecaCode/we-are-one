@@ -1,0 +1,38 @@
+.footer {
+  padding: 20px 0;
+  background: #000;
+
+  .hind-text {
+    color: #fff;
+  }
+  .copyright {
+    color: #fff;
+  }
+
+  .we-are-one {
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .festivals {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  a {
+    display: block;
+    // border: 1px solid red;
+    padding: 20px;
+    min-width: 300px;
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    img {
+      max-width: 250px;
+    }
+  }
+}
