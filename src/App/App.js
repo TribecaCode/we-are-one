@@ -9,6 +9,7 @@ import Schedule from '../pages/Schedule'
 import EventsIndex from '../pages/EventsIndex'
 import EventShow from '../pages/EventShow'
 import About from '../pages/About'
+import NotFound from '../pages/NotFound'
 
 function App() {
   const [state, setState] = useState({
@@ -109,6 +110,7 @@ function App() {
         <EventsIndex path="/events" items={selected_events} filter={filterComp} />
         <About path="/about" filter={filterComp} data={about}/>
         <EventShow path="/events/:slug" items={all_events} />
+        <NotFound default />
       </Router>
     </div>
   );

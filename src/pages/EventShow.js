@@ -1,15 +1,20 @@
 import React from 'react'
-import { Link } from '@reach/router'
+import { Link, navigate } from '@reach/router'
 import Panelist from './Panelist'
 import Carousel from './Carousel'
 import youtube from '../images/youtube.png'
 import header from '../images/we-are-one-white.png'
 import MyMetaTags from '../shared/MyMetaTags'
+import NotFound from './NotFound'
 
 const EventShow = ({ items, slug }) => {
   document.body.className = 'events-show'
 
   const item = items.find(e => e.slug === slug )
+
+  if (!item) {
+    return <NotFound />
+  }
 
   let img_src = item.marquee.full.url
   if (img_src === "/images/graphic-no-image.jpg") {
