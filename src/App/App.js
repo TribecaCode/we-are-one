@@ -12,6 +12,11 @@ import EventShow from '../pages/EventShow'
 import About from '../pages/About'
 import NotFound from '../pages/NotFound'
 
+const ScrollToTop = ({ children, location }) => {
+  React.useEffect(() => window.scrollTo(0, 0), [location.pathname])
+  return children
+}
+
 function App() {
   const [state, setState] = useState({
     isLoading: true
@@ -106,18 +111,20 @@ function App() {
         COMING TO YOUTUBE MAY 29 -JUNE 7, 2020
       </div>
 
-      <Router primary={false}>
-        <Schedule
-          path="/"
-          items={selected_events}
-          onDateSelect={onDateSelect}
-          selectedDate={selectedDate}
-          filter={filterComp}
-        />
-        <EventsIndex path="/events" items={selected_events} filter={filterComp} />
-        <About path="/about" filter={filterComp} data={about}/>
-        <EventShow path="/events/:slug" items={all_events} />
-        <NotFound default />
+      <Router>
+        <ScrollToTop path="/">
+          <Schedule
+            path="/"
+            items={selected_events}
+            onDateSelect={onDateSelect}
+            selectedDate={selectedDate}
+            filter={filterComp}
+          />
+          <EventsIndex path="/events" items={selected_events} filter={filterComp} />
+          <About path="/about" filter={filterComp} data={about}/>
+          <EventShow path="/events/:slug" items={all_events} />
+          <NotFound default />
+        </ScrollToTop>
       </Router>
 
       <Footer />
