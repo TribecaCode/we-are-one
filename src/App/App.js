@@ -4,6 +4,7 @@ import xor from "lodash/xor"
 
 import { Router } from "@reach/router"
 import Filters from '../shared/Filters'
+import Footer from './Footer'
 
 import Schedule from '../pages/Schedule'
 import EventsIndex from '../pages/EventsIndex'
@@ -118,6 +119,8 @@ function App() {
         <EventShow path="/events/:slug" items={all_events} />
         <NotFound default />
       </Router>
+
+      <Footer />
     </div>
   );
 }
