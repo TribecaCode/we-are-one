@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, navigate } from '@reach/router'
+import { Link } from '@reach/router'
 import Panelist from './Panelist'
 import Carousel from './Carousel'
 import youtube from '../images/youtube.png'

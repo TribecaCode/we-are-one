@@ -16,7 +16,7 @@ const DATES = [
   '06-07',
 ]
 
-const Schedule = ({ items, onDateSelect, selectedDate, filter }) => {
+const Schedule = ({ items, onDateSelect, selectedDate, filter, onFestivalToggle }) => {
   document.body.className = 'schedule'
 
   const morning = items.filter(film => film.time_of_day === "morning")
@@ -59,7 +59,7 @@ const Schedule = ({ items, onDateSelect, selectedDate, filter }) => {
                   <div className="col-xs-12">
                     <hr className="devider" />
                     <h3 className="ScheduleTime ScheduleTime--spaced">Morning 9am - 12pm</h3>
-                    {items.map(item => <Event key={item.id} item={item}/>)}
+                    {items.map(item => <Event key={item.id} item={item} onFestivalToggle={onFestivalToggle}/>)}
                   </div>
                 )}
               </div>

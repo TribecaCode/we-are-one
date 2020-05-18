@@ -44,6 +44,11 @@
     font-size: 16px;
     font-family: Hind;
     font-weight: 500;
+
+    .f_title:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
   .Film_runtime {
     font-size: 14px;

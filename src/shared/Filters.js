@@ -31,6 +31,7 @@ function Filters({ selected_events, filters, toggleCheckbox, onBrowseClick, onSc
   const Section = ({ title, items, type, klass }) => {
     return (
       <div className={`${klass}`}>
+        <h5 className="FilterContentSectionTitle">{title}</h5>
         <ul className={`FilterContentList FilterContentList--${type}`}>
           {items.map(({ name, value }) => {
             const isDisabled = !isActive(type, name)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "@reach/router"
 
-const Event = ({ item }) => {
+const Event = ({ item, onFestivalToggle }) => {
   let img_src = item.marquee.medium.url
   if (img_src === "/images/graphic-no-image.jpg") {
     img_src = "//tribecafilm.com/images/graphic-no-image.jpg"
@@ -27,7 +27,7 @@ const Event = ({ item }) => {
           <div className="Film_content">
             <div>
               <div className="pull-right">
-                <div className="Film_curated">Curated by {item.festival_name}</div>
+                <div className="Film_curated" onClick={onFestivalToggle(item.festival_name)}>Curated by <span className="f_title">{item.festival_name}</span></div>
                 <div className="Film_runtime pull-right">{item.run_time} min</div>
               </div>
               <div className="Film_genre">{item.kind}</div>

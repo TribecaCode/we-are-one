@@ -3,7 +3,7 @@ import Event from './Event'
 import Header from '../shared/Header'
 import MyMetaTags from '../shared/MyMetaTags'
 
-const EventsIndex = ({ items, filter }) => {
+const EventsIndex = ({ items, filter, onFestivalToggle }) => {
   document.body.className = 'events-index'
 
   return (
@@ -15,7 +15,7 @@ const EventsIndex = ({ items, filter }) => {
         <div className="container-fluid">
           <div className="container container--content">
             <div className="row">
-              {items.map(item => <Event key={item.id} item={item}/>)}
+              {items.map(item => <Event key={item.id} item={item} onFestivalToggle={onFestivalToggle}/>)}
             </div>
           </div>
         </div>

@@ -28,7 +28,7 @@ function App(props) {
         const search = {
           selected_kinds: [],
           selected_genres: [],
-          selectedDate: window.pathname === "/" ? '05-29' : null
+          selectedDate: window.location.pathname === "/" ? '05-29' : null
         }
         const selected_events = filterFilms(res.data.events, search)
         setState({
@@ -41,7 +41,8 @@ function App(props) {
           selectedDate: '05-29',
           selected_events: selected_events,
           selected_kinds: search.selected_kinds,
-          selected_genres: search.selected_genres
+          selected_genres: search.selected_genres,
+          selected_festival: null
         })
       })
     }
@@ -84,7 +85,6 @@ function App(props) {
   }
 
   const onBrowseClick = e => {
-    console.log('clearing date')
     let new_state = { ...state, selectedDate: null }
     const new_selected_films = filterFilms(state.all_events, new_state)
     new_state = { ...new_state, selected_events: new_selected_films }
@@ -92,8 +92,15 @@ function App(props) {
   }
 
   const onScheduleClick = e => {
-    console.log('setting date')
     let new_state = { ...state, selectedDate: '05-29' }
+    const new_selected_films = filterFilms(state.all_events, new_state)
+    new_state = { ...new_state, selected_events: new_selected_films }
+    setState(new_state)
+  }
+
+  const onFestivalToggle = festival_name => e => {
+    let new_name = state.selected_festival ? null : festival_name
+    let new_state = { ...state, selected_festival: new_name }
     const new_selected_films = filterFilms(state.all_events, new_state)
     new_state = { ...new_state, selected_events: new_selected_films }
     setState(new_state)
@@ -123,8 +130,9 @@ function App(props) {
             onDateSelect={onDateSelect}
             selectedDate={selectedDate}
             filter={filterComp}
+            onFestivalToggle={onFestivalToggle}
           />
-          <EventsIndex path="/events" items={selected_events} filter={filterComp} />
+          <EventsIndex path="/events" items={selected_events} filter={filterComp} onFestivalToggle={onFestivalToggle}/>
           <About path="/about" filter={filterComp} data={about}/>
           <EventShow path="/events/:slug" items={all_events} />
           <NotFound default />
@@ -156,6 +164,12 @@ function filterFilms(films, state) {
     remaining_films = remaining_films.filter(film =>
       state.selected_genres.every(genre => film.genres.includes(genre))
     )
+  }
+
+  // filter genres
+  if (state.selected_festival) {
+    remaining_films = remaining_films.filter(film =>
+      state.selected_festival === film.festival_name)
   }
 
   return remaining_films
