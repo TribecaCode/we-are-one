@@ -133,6 +133,9 @@
     .FilterContentListItem {
       font: 500 16px/18px Hind;
       color: $black;
+      // border: 1px solid red;
+      padding: 5px;
+      min-width: 15%;
 
       .FilterCount {
         color: #7e7f7f;
