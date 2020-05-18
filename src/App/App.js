@@ -17,7 +17,7 @@ const ScrollToTop = ({ children, location }) => {
   return children
 }
 
-function App() {
+function App(props) {
   const [state, setState] = useState({
     isLoading: true
   })
@@ -25,7 +25,11 @@ function App() {
   useEffect(() => {
     async function fetchFilms() {
       axios.get(`${process.env.REACT_APP_API_URL}/api/we-are-one`).then(res => {
-        const search = { selected_kinds: [], selected_genres: [], selectedDate: '05-29' }
+        const search = {
+          selected_kinds: [],
+          selected_genres: [],
+          selectedDate: window.pathname === "/" ? '05-29' : null
+        }
         const selected_events = filterFilms(res.data.events, search)
         setState({
           isLoading: false,
