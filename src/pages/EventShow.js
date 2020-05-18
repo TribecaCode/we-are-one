@@ -80,7 +80,7 @@ const EventShow = ({ items, slug }) => {
                 <br />
                 <br />
                 <div className="FilmSynopsis" dangerouslySetInnerHTML={{__html: item.synopsis}} />
-                {!!item.images.length && <Carousel title={item.display_title} images={item.images} /> }
+                {(!!item.images.length || !!item.video) && <Carousel item={item} /> }
 
               </div>
               <div className="col-xs-12 col-lg-3 col-lg-offset-1">

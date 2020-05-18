@@ -1,7 +1,9 @@
 import React from 'react'
 import Slider from "react-slick";
 
-const Carousel = ({ title, images }) => {
+const Carousel = ({ item }) => {
+  const { title, images, video } = item
+
   var settings = {
     slidesToShow: 1,
     slidesToScroll: 1
@@ -10,7 +12,14 @@ const Carousel = ({ title, images }) => {
   return (
     <div className="FilmGallery">
       <Slider {...settings}>
-        {images.map((img, i) => <img key={i} alt={title} src={img.full.url} />)}
+        {!!video &&
+          <div id='BCLcontainingBlock'>
+            <div className='BCLvideoWrapper'>
+              <div dangerouslySetInnerHTML={{__html: video}} />}
+            </div>
+          </div>
+        }
+        {!!images.length && images.map((img, i) => <img key={i} alt={title} src={img.full.url} />)}
       </Slider>
     </div>
   )
