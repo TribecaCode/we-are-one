@@ -45,7 +45,7 @@ function Filters({ selected_events, filters, onClearFilters, toggleCheckbox, onB
                     id={name}
                     type="checkbox"
                     onChange={toggleCheckbox(type, name)}
-                    checked={filters.selected_kinds.includes(name)}
+                    checked={filters[type].includes(name)}
                     disabled={isDisabled}
                   />
                   <label htmlFor={name}>
