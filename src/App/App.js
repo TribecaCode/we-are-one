@@ -12,6 +12,13 @@ import EventShow from '../pages/EventShow'
 import About from '../pages/About'
 import NotFound from '../pages/NotFound'
 
+const defaultSearch = {
+  selected_kinds: [],
+  selected_genres: [],
+  selected_festival: null,
+  selectedDate: window.location.pathname === "/" ? '05-29' : null
+}
+
 const ScrollToTop = ({ children, location }) => {
   React.useEffect(() => window.scrollTo(0, 0), [location.pathname])
   return children
@@ -25,12 +32,7 @@ function App(props) {
   useEffect(() => {
     async function fetchFilms() {
       axios.get(`${process.env.REACT_APP_API_URL}/api/we-are-one`).then(res => {
-        const search = {
-          selected_kinds: [],
-          selected_genres: [],
-          selectedDate: window.location.pathname === "/" ? '05-29' : null
-        }
-        const selected_events = filterFilms(res.data.events, search)
+        const selected_events = filterFilms(res.data.events, defaultSearch)
         setState({
           isLoading: false,
           all_events: res.data.events,
@@ -38,11 +40,11 @@ function App(props) {
           all_kinds: getKinds(res.data.events),
           all_genres: getGenres(res.data.events),
 
-          selectedDate: '05-29',
           selected_events: selected_events,
-          selected_kinds: search.selected_kinds,
-          selected_genres: search.selected_genres,
-          selected_festival: null
+          selectedDate: defaultSearch.selectedDate,
+          selected_kinds: defaultSearch.selected_kinds,
+          selected_genres: defaultSearch.selected_genres,
+          selected_festival: defaultSearch.selected_festival
         })
       })
     }
@@ -84,6 +86,16 @@ function App(props) {
     setState(new_state)
   }
 
+  const onClearFilters = e => {
+    e.preventDefault()
+    const new_state = {
+      ...state,
+      selected_events: state.all_events,
+      ...defaultSearch
+    }
+    setState(new_state)
+  }
+
   const onBrowseClick = e => {
     let new_state = { ...state, selectedDate: null }
     const new_selected_films = filterFilms(state.all_events, new_state)
@@ -110,6 +122,7 @@ function App(props) {
 
   const filterComp = <Filters
                     selected_events={selected_events}
+                    onClearFilters={onClearFilters}
                     filters={filters}
                     toggleCheckbox={toggleCheckbox}
                     onBrowseClick={onBrowseClick}

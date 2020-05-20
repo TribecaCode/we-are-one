@@ -2,7 +2,7 @@ import React from "react"
 import $ from "jquery"
 import { Link } from '@reach/router'
 
-function Filters({ selected_events, filters, toggleCheckbox, onBrowseClick, onScheduleClick }) {
+function Filters({ selected_events, filters, onClearFilters, toggleCheckbox, onBrowseClick, onScheduleClick }) {
   const getRemainingCount = (type, name) => {
     switch (type) {
       case "selected_kinds":
@@ -129,6 +129,12 @@ function Filters({ selected_events, filters, toggleCheckbox, onBrowseClick, onSc
                   />
                 </div>
               </div>
+            </div>
+
+            <div className="FiltersContentActions">
+              <button className="btn btn-clear-filters" onClick={onClearFilters}>
+                CLEAR FILTERS
+              </button>
             </div>
           </div>
         </div>
