@@ -31,6 +31,7 @@ const Event = ({ item, onFestivalToggle }) => {
                 <div className="Film_runtime pull-right">{item.run_time} min</div>
               </div>
               <div className="Film_genre">{item.kind}</div>
+              <div className="clearfix" />
               <h4 className="heading-4">
                 <Link className="Film_title" to={`/events/${item.slug}`}>{item.display_title}</Link>
                 {/* <div className="Card_subtitle">date {item.date}</div> */}
@@ -39,7 +40,10 @@ const Event = ({ item, onFestivalToggle }) => {
               </h4>
               <div className="Film_summary">{item.short_summary}</div>
             </div>
-            <Link className="Film_more" to={`/events/${item.slug}`}>View Details</Link>
+            <div className="time_and_more">
+              <span className="start_time">Starts at {item.display_time} EST on {item.display_date}</span>
+              <Link className="Film_more" to={`/events/${item.slug}`}>View Details</Link>
+            </div>
           </div>
         </div>
       </div>

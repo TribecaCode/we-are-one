@@ -19,7 +19,7 @@ const DATES = [
 const Schedule = ({ items, onDateSelect, selectedDate, filter, onFestivalToggle }) => {
   document.body.className = 'schedule'
 
-  const morning = items.filter(film => film.time_of_day === "morning")
+  // const morning = items.filter(film => film.time_of_day === "morning")
   // const day = items.filter(film => film.time_of_day === "day")
   // const eventing = items.filter(film => film.time_of_day === "evening")
   // const night = items.filter(film => film.time_of_day === "night")
@@ -52,16 +52,11 @@ const Schedule = ({ items, onDateSelect, selectedDate, filter, onFestivalToggle 
 
               <div className="row">
                 <div className="col-xs-12">
-                  <h3 className="ScheduleTime">Fri May 29</h3>
-                </div>
+                  <br />
+                  <br />
 
-                {!!morning.length && (
-                  <div className="col-xs-12">
-                    <hr className="devider" />
-                    <h3 className="ScheduleTime ScheduleTime--spaced">Morning 9am - 12pm</h3>
-                    {items.map(item => <Event key={item.id} item={item} onFestivalToggle={onFestivalToggle}/>)}
-                  </div>
-                )}
+                  {items.map(item => <Event key={item.id} item={item} onFestivalToggle={onFestivalToggle}/>)}
+                </div>
               </div>
             </div>
           </div>

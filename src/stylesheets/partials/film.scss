@@ -66,8 +66,19 @@
     font-weight: 400;
     @include fluid-type(14px, 18px);
   }
-  .Film_more {
-    color: $black;
-    text-decoration: underline;
+
+  .time_and_more {
+    display: flex;
+    justify-content: space-between;
+
+    .start_time {
+      @include fluid-type(14px, 16px);
+      font-family: Hind;
+    }
+
+    .Film_more {
+      color: $black;
+      text-decoration: underline;
+    }
   }
 }
