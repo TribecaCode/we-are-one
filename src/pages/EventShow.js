@@ -54,7 +54,7 @@ const EventShow = ({ items, slug }) => {
 
             <div className="container">
               <div className="FilmHeader__content__action">
-                <h4 className="heading-4">{item.premiere}</h4>
+                <h4 className="heading-4">{item.premiere} Premiere</h4>
               </div>
             </div>
           </div>
@@ -84,16 +84,16 @@ const EventShow = ({ items, slug }) => {
 
               </div>
               <div className="col-xs-12 col-lg-3 col-lg-offset-1">
-                <br />
-                <div className="hind-text">Watch Now, exlusively on</div>
+                <div className='dateTime'>Watch On</div>
                 <br />
                 <a href={item.youtube_url}>
                   <img className="screening-img" src={youtube} alt="link to youtube" />
                 </a>
                 <br />
                 <br />
+                <div className='dateTime'>Starts at {item.display_time} EST on {item.display_date}</div>
                 <br />
-                <div className="hind-text">Curated by</div>
+                <div className="dateTime">Curated by</div>
                 <br />
                 {!!item.festival_logo_url && (
                   <img className="screening-img" src={item.festival_logo_url} alt="festival logo" />

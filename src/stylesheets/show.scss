@@ -130,6 +130,11 @@
     height: auto;
   }
 
+  .dateTime {
+    font-family: Hind;
+    @include fluid-type(14px, 18px);
+  }
+
   .rush-note {
     color: $black;
     font: 14px/20px Hind;
