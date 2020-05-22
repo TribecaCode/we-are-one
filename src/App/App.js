@@ -16,7 +16,8 @@ const defaultSearch = {
   selected_kinds: [],
   selected_genres: [],
   selected_festival: null,
-  selectedDate: window.location.pathname === "/" ? '05-29' : null
+  selectedDate: window.location.pathname === "/" ? '05-29' : null,
+  sort: window.location.pathname === "/" ? 'screening_date_time' : 'title'
 }
 
 const ScrollToTop = ({ children, location }) => {
@@ -44,7 +45,8 @@ function App(props) {
           selectedDate: defaultSearch.selectedDate,
           selected_kinds: defaultSearch.selected_kinds,
           selected_genres: defaultSearch.selected_genres,
-          selected_festival: defaultSearch.selected_festival
+          selected_festival: defaultSearch.selected_festival,
+          sort: defaultSearch.sort
         })
       })
     }
@@ -97,15 +99,15 @@ function App(props) {
   }
 
   const onBrowseClick = e => {
-    let new_state = { ...state, selectedDate: null }
+    let new_state = { ...state, selectedDate: null, sort: 'title' }
     const new_selected_films = filterFilms(state.all_events, new_state)
     new_state = { ...new_state, selected_events: new_selected_films }
     setState(new_state)
   }
 
   const onScheduleClick = e => {
-    let new_state = { ...state, selectedDate: '05-29' }
-    const new_selected_films = filterFilms(state.all_events, new_state)
+    let new_state = { ...state, selectedDate: '05-29', sort: 'screening_date_time' }
+    let new_selected_films = filterFilms(state.all_events, new_state)
     new_state = { ...new_state, selected_events: new_selected_films }
     setState(new_state)
   }
@@ -184,6 +186,8 @@ function filterFilms(films, state) {
     remaining_films = remaining_films.filter(film =>
       state.selected_festival === film.festival_name)
   }
+
+  remaining_films.sort((a, b) => a[state.sort] > b[state.sort] ? 1 : -1)
 
   return remaining_films
 }
