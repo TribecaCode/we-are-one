@@ -5,6 +5,12 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { globalHistory } from '@reach/router';
+
+globalHistory.listen(({ location }) => {
+  window.gtag('config', 'UA-10764567-6', {'page_path': location.pathname});
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
