@@ -16,8 +16,8 @@ const defaultSearch = {
   selected_kinds: [],
   selected_genres: [],
   selected_festival: null,
-  selectedDate: window.location.pathname === "/" ? '05-29' : null,
-  sort: window.location.pathname === "/" ? 'screening_date_time' : 'title'
+  selectedDate: window.location.pathname === "/schedule" ? '05-29' : null,
+  sort: window.location.pathname === "/schedule" ? 'screening_date_time' : 'title'
 }
 
 const ScrollToTop = ({ children, location }) => {
@@ -139,15 +139,19 @@ function App(props) {
 
       <Router>
         <ScrollToTop path="/">
+          <EventsIndex path="/"
+            items={selected_events}
+            filter={filterComp}
+            onFestivalToggle={onFestivalToggle}
+          />
           <Schedule
-            path="/"
+            path="/schedule"
             items={selected_events}
             onDateSelect={onDateSelect}
             selectedDate={selectedDate}
             filter={filterComp}
             onFestivalToggle={onFestivalToggle}
           />
-          <EventsIndex path="/events" items={selected_events} filter={filterComp} onFestivalToggle={onFestivalToggle}/>
           <About path="/about" filter={filterComp} data={about}/>
           <EventShow path="/events/:slug" items={all_events} />
           <NotFound default />

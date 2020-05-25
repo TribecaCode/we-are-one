@@ -90,11 +90,11 @@ function Filters({ selected_events, filters, onClearFilters, toggleCheckbox, onB
         </div>
         <div className="spacer"></div>
         <div className="FiltersNavRight ">
-          <Link className="FiltersNavLink" to="/" id="schedule" onClick={onScheduleClick}>
-            SCHEDULE
-          </Link>
-          <Link className="FiltersNavLink" to="/events" id="browse" onClick={onBrowseClick}>
+          <Link className="FiltersNavLink" to="/" id="browse" onClick={onBrowseClick}>
             BROWSE
+          </Link>
+          <Link className="FiltersNavLink" to="/schedule" id="schedule" onClick={onScheduleClick}>
+            SCHEDULE
           </Link>
           <Link className="FiltersNavLink" to="/about" id="about">
             FAQ
