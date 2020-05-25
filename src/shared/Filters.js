@@ -97,7 +97,7 @@ function Filters({ selected_events, filters, onClearFilters, toggleCheckbox, onB
             BROWSE
           </Link>
           <Link className="FiltersNavLink" to="/about" id="about">
-            ABOUT
+            FAQ
           </Link>
         </div>
       </div>
