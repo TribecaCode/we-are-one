@@ -1,35 +1,43 @@
-import React from 'react'
-import { Link } from '@reach/router'
-import Panelist from './Panelist'
-import Carousel from './Carousel'
-import youtube from '../images/youtube.png'
-import header from '../images/we-are-one-white.png'
-import MyMetaTags from '../shared/MyMetaTags'
-import NotFound from './NotFound'
+import React from "react";
+import { Link } from "@reach/router";
+import Panelist from "./Panelist";
+import Carousel from "./Carousel";
+import youtube from "../images/youtube.png";
+import header from "../images/we-are-one-white.png";
+import MyMetaTags from "../shared/MyMetaTags";
+import NotFound from "./NotFound";
 
 const EventShow = ({ items, slug }) => {
-  document.body.className = 'events-show'
+  document.body.className = "events-show";
 
-  const item = items.find(e => e.slug === slug )
+  const item = items.find(e => e.slug === slug);
 
   if (!item) {
-    return <NotFound />
+    return <NotFound />;
   }
 
-  let img_src = item.marquee.full.url
+  let img_src = item.marquee.full.url;
   if (img_src === "/images/graphic-no-image.jpg") {
-    img_src = "//tribecafilm.com/images/graphic-no-image.jpg"
+    img_src = "//tribecafilm.com/images/graphic-no-image.jpg";
   }
 
   return (
     <div>
       <MyMetaTags title={item.display_title} description={item.short_summary} />
       <header className="Header">
-        <img className="brand" src={header} alt="We Are One Festival White logo" />
+        <img
+          className="brand"
+          src={header}
+          alt="We Are One Festival White logo"
+        />
       </header>
       <div className="FilmHeader">
         <div className="container FilmHeader_img-container">
-          <img className="img-responsive center-block" alt={item.display_title} src={img_src} />
+          <img
+            className="img-responsive center-block"
+            alt={item.display_title}
+            src={img_src}
+          />
           <div className="FilmHeader__mask"></div>
 
           <div className="FilmHeader__content">
@@ -37,15 +45,14 @@ const EventShow = ({ items, slug }) => {
               <div className="row">
                 <div className="hidden-xs hidden-sm col-md-9">
                   <div className="PageBreadcrumbs">
-                    <Link to="/">Schedule</Link> »
-                    {" "}
-                    <Link to="/events">Browse</Link> » {item.display_title}
+                    <Link to="/schedule">Schedule</Link> »{" "}
+                    <Link to="/">Browse</Link> » {item.display_title}
                   </div>
                 </div>
                 <div className="col-xs-12 col-md-3">
                   <div className="PageBreadcrumbs">
                     <Link className="pull-right" to="/">
-                      <i className="fas fa-angle-left"/>  Home
+                      <i className="fas fa-angle-left" /> Home
                     </Link>
                   </div>
                 </div>
@@ -62,7 +69,9 @@ const EventShow = ({ items, slug }) => {
       </div>
 
       <div className="bg-wrapper bg-festival">
-        <div className={`container-fluid bg-white film-container film-container--${item.color}`}>
+        <div
+          className={`container-fluid bg-white film-container film-container--${item.color}`}
+        >
           <div className="container container--content">
             <div className="row">
               <div className="col-xs-12 col-lg-8">
@@ -72,31 +81,45 @@ const EventShow = ({ items, slug }) => {
                   {!!item.run_time && <span> {item.run_time} min</span>}
                 </div>
                 <h1 className="heading-1 FilmTitle">{item.display_title}</h1>
-                  {!!item.genres && !!item.genres.length && (
-                    <div className="FilmGenres">
-                      <span>{item.genres.join(', ')}</span>
-                    </div>
-                  )}
+                {!!item.genres && !!item.genres.length && (
+                  <div className="FilmGenres">
+                    <span>{item.genres.join(", ")}</span>
+                  </div>
+                )}
                 <br />
                 <br />
-                <div className="FilmSynopsis" dangerouslySetInnerHTML={{__html: item.synopsis}} />
-                {(!!item.images.length || !!item.video) && <Carousel item={item} /> }
-
+                <div
+                  className="FilmSynopsis"
+                  dangerouslySetInnerHTML={{ __html: item.synopsis }}
+                />
+                {(!!item.images.length || !!item.video) && (
+                  <Carousel item={item} />
+                )}
               </div>
               <div className="col-xs-12 col-lg-3 col-lg-offset-1">
-                <div className='dateTime'>Watch On</div>
+                <div className="dateTime">Watch On</div>
                 <br />
                 <a href={item.youtube_url}>
-                  <img className="screening-img" src={youtube} alt="link to youtube" />
+                  <img
+                    className="screening-img"
+                    src={youtube}
+                    alt="link to youtube"
+                  />
                 </a>
                 <br />
                 <br />
-                <div className='dateTime'>Starts at {item.display_time} EST on {item.display_date}</div>
+                <div className="dateTime">
+                  Starts at {item.display_time} EST on {item.display_date}
+                </div>
                 <br />
                 <div className="dateTime">Curated by</div>
                 <br />
                 {!!item.festival_logo_url && (
-                  <img className="screening-img" src={item.festival_logo_url} alt="festival logo" />
+                  <img
+                    className="screening-img"
+                    src={item.festival_logo_url}
+                    alt="festival logo"
+                  />
                 )}
               </div>
             </div>
@@ -113,8 +136,12 @@ const EventShow = ({ items, slug }) => {
                     <div className="FilmSectionBlocks">
                       {item.cast_credits.map((credit, i) => (
                         <div className="FilmSectionBlock" key={i}>
-                          <div className="FilmSectionSubtitle">{credit.title}</div>
-                          <div className="FilmSectionContent">{credit.name}</div>
+                          <div className="FilmSectionSubtitle">
+                            {credit.title}
+                          </div>
+                          <div className="FilmSectionContent">
+                            {credit.name}
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -122,11 +149,13 @@ const EventShow = ({ items, slug }) => {
                 )}
 
                 {!!item.panelists.length && (
-                <div>
-                  <hr className="devider" />
-                  <h2 className="FilmSectionTitle">PANELISTS</h2>
-                  {item.panelists.map((p, i) => <Panelist panelist={p} key={i}/>)}
-                </div>
+                  <div>
+                    <hr className="devider" />
+                    <h2 className="FilmSectionTitle">PANELISTS</h2>
+                    {item.panelists.map((p, i) => (
+                      <Panelist panelist={p} key={i} />
+                    ))}
+                  </div>
                 )}
               </div>
             </div>
@@ -134,7 +163,7 @@ const EventShow = ({ items, slug }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EventShow
+export default EventShow;
