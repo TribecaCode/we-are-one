@@ -96,7 +96,9 @@ const EventShow = ({ items, slug }) => {
                   <Carousel item={item} />
                 )}
               </div>
-              <div className="col-xs-12 col-lg-3 col-lg-offset-1">
+              <br />
+              <br />
+              <div className="col-xs-12 col-lg-3 col-lg-offset-1 FilmUrls">
                 <div className="dateTime">Watch On</div>
                 <br />
                 <a href={item.youtube_url}>

@@ -115,6 +115,12 @@
     color: #141414;
   }
 
+  @media (max-width: 500px) {
+    .FilmUrls {
+      text-align: center;
+    }
+  }
+
   .FilmSectionTitle {
     font: 24px/30px Montserrat;
     font-weight: 600;

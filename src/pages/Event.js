@@ -27,6 +27,12 @@ const Event = ({ item, onFestivalToggle }) => {
             >
               {item.display_title}
             </Link>
+
+            <div className="time_and_more">
+              <span className="start_time">
+                Starts at {item.display_time} EST on {item.display_date}
+              </span>
+            </div>
           </div>
         </div>
       </div>
