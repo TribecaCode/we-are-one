@@ -13,7 +13,7 @@ const Event = ({ item, onFestivalToggle }) => {
         <div className="Card Card--film">
           <Link to={`/events/${item.slug}`}>
             <div
-              className="Card_img Card_img--ruby"
+              className={`Card_img Card_img--${item.color}`}
               style={{ backgroundImage: `url(${img_src})` }}
             ></div>
           </Link>
