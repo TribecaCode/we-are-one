@@ -153,7 +153,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <div className="dates-banner">COMING TO YOUTUBE MAY 29 -JUNE 7, 2020</div>
+      <div className="dates-banner">NOW ON YOUTUBE</div>
 
       <Router>
         <ScrollToTop path="/">
